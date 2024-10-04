@@ -74,13 +74,18 @@ export default function Menu() {
                   placement === "bottom-start" ? "left top" : "left bottom",
               }}
             >
-              <Paper style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}>
+              <Paper
+                style={{
+                  backgroundColor: "rgba(0, 0, 0, 0.5)",
+                }}
+              >
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList
                     autoFocusItem={open}
                     id="composition-menu"
                     aria-labelledby="composition-button"
                     onKeyDown={handleListKeyDown}
+                    className="text-white backdrop-blur-sm"
                   >
                     <MenuItem onClick={handleClose}>Manage My Account</MenuItem>
                     <MenuItem onClick={handleClose}>My Order</MenuItem>
