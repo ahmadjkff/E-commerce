@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const CART = [
   {
     id: 1,
@@ -23,8 +25,32 @@ const CART = [
 ];
 
 function Cart() {
-  const subtotal = (Price, quantity) => {
-    return Price * quantity;
+  const [cart, setCart] = useState(CART);
+
+  // Function to calculate the subtotal based on price and quantity
+  const calculateSubtotal = (price, quantity) => {
+    return price * quantity;
+  };
+
+  // Function to handle changes in quantity input
+  const handleOnChange = (event, id) => {
+    const newQuantity = parseInt(event.target.value, 10);
+
+    // Update the quantity in the cart
+    const updatedCart = cart.map((product) =>
+      product.id === id ? { ...product, quantity: newQuantity } : product
+    );
+
+    setCart(updatedCart);
+  };
+
+  // Calculate total price
+  const calculateTotal = () => {
+    return cart.reduce(
+      (acc, product) =>
+        acc + calculateSubtotal(product.price, product.quantity),
+      0
+    );
   };
 
   return (
@@ -40,18 +66,26 @@ function Cart() {
         <p>Subtotal</p>
       </div>
 
-      {CART.map((product) => (
+      {cart.map((product) => (
         <div
           key={product.id}
           className="flex justify-between items-center mb-10 py-6 px-10 shadow-md"
         >
           <div className="flex gap-6 items-center ">
-            <img src={product.image} alt="" />
+            <img src={product.image} alt={product.name} />
             <p>{product.name}</p>
           </div>
-          <p>{product.price}</p>
-          <p>{product.quantity}</p>
-          <p>{subtotal(product.price, product.quantity)}</p>
+          <p className="-ml-16">{product.price}</p>
+          <input
+            className="border py-[6px] px-3 w-[60px] h-[40px]"
+            type="number"
+            value={product.quantity}
+            min={1}
+            onChange={(event) => handleOnChange(event, product.id)}
+          />
+          <p className="ml-14">
+            ${calculateSubtotal(product.price, product.quantity)}
+          </p>
         </div>
       ))}
 
@@ -65,7 +99,7 @@ function Cart() {
       <div className="flex justify-between mb-20">
         <div className="flex gap-4 h-14">
           <input
-            className="py-4 px-6 border border-black"
+            className="py-4 px-6 border border-black rounded-md"
             type="text"
             placeholder="Coupon Code"
           />
@@ -73,11 +107,11 @@ function Cart() {
             Apply Coupon
           </button>
         </div>
-        <div className="flex flex-col gap-4 border-2 border-black w-[470px] px-6 py-8 justify-center">
+        <div className="flex flex-col gap-4 border-2 border-black w-[470px] px-6 py-8 justify-center text-sm">
           <p className="text-xl text-start mb-2">Cart Total</p>
           <div className="flex justify-between">
             <p>Subtotal:</p>
-            <p>${CART.reduce((acc, item) => acc + item.price, 0)}</p>
+            <p>${calculateTotal()}</p>
           </div>
           <hr className="my-4 w-full border-t border-gray-300" />
           <div className="flex justify-between">
@@ -87,7 +121,7 @@ function Cart() {
           <hr className="my-4 w-full border-t border-gray-300" />
           <div className="flex justify-between">
             <p>Total:</p>
-            <p>${CART.reduce((acc, item) => acc + item.price, 0)}</p>
+            <p>${calculateTotal()}</p>
           </div>
           <button className="bg-button2 px-12 py-4 self-center rounded-md text-white">
             Process To Checkout
