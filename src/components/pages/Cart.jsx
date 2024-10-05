@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const products = [
   {
@@ -122,9 +123,12 @@ const Cart = () => {
               <p>Total:</p>
               <p>{total}</p>
             </div>
-            <button className="bg-button2 px-12 py-4 self-center rounded-md text-white">
+            <Link
+              to="/checkout"
+              className="bg-button2 px-12 py-4 self-center rounded-md text-white"
+            >
               Process To Checkout
-            </button>
+            </Link>
           </div>
         </div>
       </div>
