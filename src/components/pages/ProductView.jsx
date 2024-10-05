@@ -86,7 +86,7 @@ function ProductView() {
           />
         </div>
         <div className="flex flex-col gap-4 text-start mx-[70px]">
-          <h1>{products.title}</h1>
+          <h1 className="text-2xl font-semibold">{product?.title}</h1>
           <div className="flex items-center gap-4">
             <div className="flex gap-2">
               <img src={rating} alt="rating" width={100} height={20} />
