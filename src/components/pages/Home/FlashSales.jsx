@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Product from "../../Product";
 import rating from "../../../assets/rating.png";
+import CountdownTimer from "../../common/CountdownTimer";
 
 function FlashSales({ products }) {
   return (
@@ -9,7 +10,10 @@ function FlashSales({ products }) {
         <div className="bg-button2 w-5 h-10 rounded-md" />
         <h1 className="text-xl text-button2">Today's</h1>
       </div>
-      <h1 className="text-4xl font-semibold">Flash Sales</h1>
+      <div className="flex gap-[87px] items-center">
+        <h1 className="text-4xl font-semibold">Flash Sales</h1>
+        <CountdownTimer initialTime={340000} />
+      </div>
 
       <div className="flex flex-wrap gap-[30px] justify-center">
         {products?.map((product, index) => {
