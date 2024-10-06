@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Product from "../../Product";
 import rating from "../../../assets/rating.png";
 import CountdownTimer from "../../common/CountdownTimer";
+import Ratingg from "../../Ratingg";
 
 function FlashSales({ products }) {
   return (
@@ -28,8 +29,8 @@ function FlashSales({ products }) {
                   image={product.images[0]}
                 />
                 <div className="flex text-sm gap-2 items-center mt-2 ">
-                  <img src={rating} alt="" width={100} />
-                  <p>(65)</p>
+                  <Ratingg rating={product.rating} />
+                  <p>({product.reviews.length})</p>
                 </div>
               </div>
             );

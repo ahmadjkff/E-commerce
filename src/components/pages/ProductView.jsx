@@ -9,6 +9,7 @@ import Product from "../Product";
 import fetchSingleProduct from "../../fetchSingleProduct";
 import ProductsData from "../../ProductsData";
 import { Category } from "@mui/icons-material";
+import Ratingg from "../Ratingg";
 const SIZES = ["XS", "S", "M", "L", "XL"];
 
 function ProductView() {
@@ -89,12 +90,20 @@ function ProductView() {
           <h1 className="text-2xl font-semibold">{product?.title}</h1>
           <div className="flex items-center gap-4">
             <div className="flex gap-2">
-              <img src={rating} alt="rating" width={100} height={20} />
-              <p className="text-sm">(150 reviews)</p>
+              <Ratingg rating={product?.rating} />
+              <p className="text-sm">({product?.reviews?.length})</p>
             </div>
             <div className="flex items-center gap-2">
               <div className="h-4 border-l border-gray-400" />
-              <p className="text-sm text-green-300">In Stock</p>
+              <p
+                className={`text-sm ${
+                  product?.availabilityStatus === "In Stock"
+                    ? "text-green-300"
+                    : "text-red-500"
+                }`}
+              >
+                {product?.availabilityStatus}
+              </p>
             </div>
           </div>
           <p className="text-2xl">${product?.price}</p>
@@ -122,7 +131,7 @@ function ProductView() {
             <div className="flex gap-4 items-center">
               {SIZES.map((size) => (
                 <button
-                  key={size} // Always add a unique key when rendering a list
+                  key={size}
                   className={`w-8 h-8 border p-1 text-center rounded-md hover:bg-button2 hover:text-white ${
                     selectedSize === size ? "bg-button2 text-white" : ""
                   }`}
@@ -201,7 +210,7 @@ function ProductView() {
           {products?.map((product, index) => {
             if (index < 4)
               return (
-                <div>
+                <div key={index}>
                   <Product
                     id={product.id}
                     name={product.title}

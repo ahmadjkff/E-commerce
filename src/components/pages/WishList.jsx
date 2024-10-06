@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Product from "../Product";
 import rating from "../../assets/rating.png";
 import productsData from "../../ProductsData";
+import Ratingg from "../Ratingg";
 
 function WishList() {
   const wihsListItems = useRef();
@@ -55,8 +56,8 @@ function WishList() {
                 image={product.images[0]}
               />
               <div className="flex text-sm gap-2 items-center mt-2 ">
-                <img src={rating} alt="" width={100} />
-                <p>(65)</p>
+                <Ratingg rating={product.rating} />
+                <p>({product.reviews.length})</p>
               </div>
             </div>
           );

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Product from "../../Product";
 import rating from "../../../assets/rating.png";
+import Ratingg from "../../Ratingg";
 
 function BestSelling({ products }) {
   return (
@@ -30,8 +31,8 @@ function BestSelling({ products }) {
                   image={product.images[0]}
                 />
                 <div className="flex text-sm gap-2 items-center mt-2 ">
-                  <img src={rating} alt="" width={100} />
-                  <p>(65)</p>
+                  <Ratingg rating={product.rating} />
+                  <p>({product.reviews.length})</p>
                 </div>
               </div>
             );
