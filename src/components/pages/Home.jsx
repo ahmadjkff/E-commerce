@@ -35,7 +35,7 @@ function Home() {
       <New />
       <Services />
       <button
-        className="absolute -bottom-28 right-0 p-3 rounded-full bg-secondary"
+        className="fixed bottom-8 right-8 p-3 rounded-full bg-secondary"
         onClick={moveTop}
       >
         <img src={uparrow} alt="" width={24} />
