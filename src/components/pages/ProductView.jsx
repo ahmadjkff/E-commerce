@@ -65,8 +65,8 @@ function ProductView() {
 
   return (
     <div className="flex flex-col  mx-[135px] my-[140px]">
-      <div className="flex gap-[30px] mb-[140px]">
-        <div className="flex flex-col gap-4">
+      <div className="flex gap-[30px] mb-[140px] xs:flex-col md:flex-col lg:flex-row xs:items-center">
+        <div className="grid gap-4 gap-x-52 xs:grid-cols-2 lg:grid-cols-1 xs:mr-40">
           {[...Array(4)].map((_, index) => (
             <img
               key={index}
@@ -219,8 +219,8 @@ function ProductView() {
                     image={product.images[0]}
                   />
                   <div className="flex text-sm gap-2 items-center mt-2 ">
-                    <img src={rating} alt="" width={100} />
-                    <p>(65)</p>
+                    <Ratingg rating={product.rating} />
+                    <p>({product.reviews.length})</p>
                   </div>
                 </div>
               );
