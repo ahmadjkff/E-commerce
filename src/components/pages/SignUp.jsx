@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function SignUp() {
   return (
-    <div className="flex pr-10 mb-36 sm:flex-col sm:gap-16 sm:items-center md:justify-center md:flex-row md:gap-32">
+    <div className="flex pr-10 mb-36 xs:flex-col xs:gap-16 xs:justify-center xs:items-center xs:mx-10 md:justify-center md:flex-row md:gap-32">
       <img
         className="sm:w-[605px] sm:h-[581px] md:w-[805px] md:h-[781px]"
         src={signImage}
@@ -37,16 +37,16 @@ function SignUp() {
             />
           </Box>
         </div>
-        <button className="bg-button2 text-white p-4 rounded-md">
+        <button className="bg-button2 text-white p-4 rounded-md border border-black hover:bg-white hover:text-button2">
           Create Account
         </button>
         <div className="relative">
-          <button className="border-2 w-full p-4 rounded-md">
+          <button className="border w-full p-4 rounded-md border-black hover:bg-button2 hover:text-white">
             <img
               className="absolute w-4 h-4 left-20 top-1/2 transform -translate-y-1/2"
               src={glogo}
               alt=""
-            />{" "}
+            />
             Sign Up with Google
           </button>
         </div>

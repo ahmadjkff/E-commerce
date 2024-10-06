@@ -18,7 +18,7 @@ function WishList() {
     <div className="flex flex-col xs:px-10 sm:px-20 md:px-[135px]">
       <div className="flex gap-5 mb-16 items-center justify-between">
         <h1 className="text-xl">WishList ({wihsListItems.current})</h1>
-        <button className="border mt-4 xs:px-4 sm:px-6 sm:py-2 md:px-12 md:py-4">
+        <button className="border mt-4 xs:px-4 sm:px-6 sm:py-2 md:px-12 md:py-4 rounded-md hover:border-black hover:bg-button2 hover:text-white">
           Move All To Bag
         </button>
       </div>
@@ -40,7 +40,7 @@ function WishList() {
           <div className="bg-button2 w-5 h-10 rounded-md" />
           <h1 className="text-xl">Just For You</h1>
         </div>
-        <button className="border mt-4 xs:px-4 sm:px-6 sm:py-2 md:px-12 md:py-4">
+        <button className="border mt-4 xs:px-4 sm:px-6 sm:py-2 md:px-12 md:py-4 rounded-md hover:border-black hover:bg-button2 hover:text-white">
           See All
         </button>
       </div>

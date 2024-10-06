@@ -32,7 +32,7 @@ function Products() {
         ))}
       </div>
       <button
-        className="bg-button2 rounded-md px-12 py-4 text-white"
+        className="bg-button2 rounded-md px-12 py-4 text-white border border-black hover:bg-white hover:text-button2"
         onClick={handleOnClick}
       >
         Load More

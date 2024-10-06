@@ -19,7 +19,7 @@ function About() {
         <span className="text-gray-400">Home /</span> About
       </p>
       <div className="flex flex-col gap-[75px] mb-20 sm:items-center md:justify-center">
-        <div className="flex  sm:flex-col  md:flex-row">
+        <div className="flex xs:flex-col  md:flex-row">
           <div className="flex flex-col gap-6 px-[75px] mt-[179px] text-start">
             <h1 className="text-[54px] font-semibold">Our Story</h1>
             <p>
@@ -36,12 +36,12 @@ function About() {
             </p>
           </div>
           <img
-            className="mt-11 max-w-[709px] h-auto self-center sm:w-[500px] md:w-full"
+            className="mt-11 max-w-[709px] h-auto self-center md:w-full"
             src={pink}
             alt="pink image"
           />
         </div>
-        <div className="flex mx-[135px] my-[140px] gap-[30px] sm:flex-col md:flex-row">
+        <div className="flex mx-[135px] my-[140px] gap-[30px] items-center xs:flex-col md:flex-row">
           <div className="flex flex-col gap-4 items-center w-[270px] h-[230px] border py-[30px] rounded-md">
             <img className="w-20" src={market} alt="market icon" />
             <p className="text-[32px] font-bold">10.5K</p>
@@ -65,7 +65,7 @@ function About() {
         </div>
       </div>
 
-      <div className="flex flex-row mb-36 justify-center h-[564px] my-20 overflow-x-auto sm:flex-wrap sm:gap-36 md:gap-[30px] md:flex-nowrap">
+      <div className="flex mb-36 justify-center min-h-[564px] overflow-y-auto gap-[30px] xs:flex-col xs:gap-32 xs:mx-5 md:flex-row">
         <div className="bg-secondary h-[430px] text-start">
           <img
             className="min-w-[326px] h-[392px] mx-auto mt-[39px]"
@@ -133,9 +133,7 @@ function About() {
           </div>
         </div>
       </div>
-      <div className="flex justify-center mt-10">
-        <img className="w-[112px] h-4" src={dots} alt="dots" />
-      </div>
+      <div className="flex justify-center mt-10"></div>
 
       <div className="flex justify-around my-[140px] xs:flex-col xs:gap-8 md:flex-row">
         <div className="flex flex-col items-center">

@@ -6,17 +6,16 @@ import Menu from "./Menu";
 import LongMenu from "./LongMenu";
 
 const options = [
-  "Manage My Account",
-  "My Order",
-  "My Cancilations",
-  "My Reviews",
-  "Logout",
+  { name: "Home", to: "/" },
+  { name: "Contact", to: "/contact" },
+  { name: "About", to: "/about" },
+  { name: "SignUp", to: "signup" },
 ];
 
 function Header() {
   return (
     <header className="flex justify-between my-10 border-b-2 w-full xs:px-10 sm:px-16 md:px-20 pb-4">
-      <div>
+      <div className=" xs:hidden sm:hidden md:block lg:block xl:block">
         <Link
           to="/"
           className="font-bold xs:text-[14px] sm:text-[20px] md:text-[24px] text-center"

@@ -2,18 +2,17 @@ import LongMenu from "../../LongMenu";
 import rightarrow from "../../../assets/rightarrow.png";
 import { Link } from "react-router-dom";
 import ad from "../../../assets/Home/ad.png";
-import apple from "../../../assets/Home/apple.png";
 
 const options = [
-  "Woman’s Fashion",
-  "Men’s Fashion",
-  "Electronics",
-  "Home &Lifestyle",
-  "Medicine",
-  "Sports &Outdoor",
-  "Baby’s &Toys",
-  "Groceries &Pets",
-  "Health &Beauty",
+  { name: "Woman’s Fashion", to: "/products" },
+  { name: "Men’s Fashion", to: "/products" },
+  { name: "Electronics", to: "/products" },
+  { name: "Home &Lifestyle", to: "/products" },
+  { name: "Medicine", to: "/products" },
+  { name: "Sports &Outdoor", to: "/products" },
+  { name: "Baby’s &Toys", to: "/products" },
+  { name: "Groceries &Pets", to: "/products" },
+  { name: "Health &Beauty", to: "/products" },
 ];
 
 function FirstSection() {

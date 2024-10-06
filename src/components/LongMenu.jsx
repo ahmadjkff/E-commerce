@@ -47,13 +47,13 @@ export default function LongMenu({ options }) {
         }}
       >
         {options?.map((option, index) => (
-          <Link to="/products" key={index}>
+          <Link to={`${option.to}`} key={index}>
             <MenuItem
               key={option}
               selected={option === "Pyxis"}
               onClick={handleClose}
             >
-              {option}
+              {option.name}
             </MenuItem>
           </Link>
         ))}

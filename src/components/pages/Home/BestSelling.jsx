@@ -14,7 +14,7 @@ function BestSelling({ products }) {
         <h1 className="text-4xl font-semibold xs:text-center">
           Best Selling Products
         </h1>
-        <Link className="py-4 px-12 bg-button2 rounded-md text-white">
+        <Link className="py-4 px-12 bg-button2 rounded-md text-white border border-black hover:bg-white hover:text-button2">
           View All
         </Link>
       </div>
@@ -40,7 +40,7 @@ function BestSelling({ products }) {
       </div>
       <Link
         to="/products"
-        className="py-4 px-12 bg-button2 self-center text-white mt-5 rounded-md"
+        className="py-4 px-12 bg-button2 self-center text-white mt-5 rounded-md border border-black hover:bg-white hover:text-button2"
       >
         View All Products
       </Link>

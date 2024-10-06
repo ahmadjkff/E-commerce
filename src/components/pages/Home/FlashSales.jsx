@@ -38,7 +38,7 @@ function FlashSales({ products }) {
       </div>
       <Link
         to="/products"
-        className="py-4 px-12 bg-button2 self-center text-white mt-5 rounded-md"
+        className="py-4 px-12 bg-button2 self-center text-white mt-5 rounded-md border border-black hover:bg-white hover:text-button2"
       >
         View All Products
       </Link>

@@ -27,21 +27,21 @@ const CountdownTimer = ({ initialTime }) => {
       <div className="flex gap-4">
         <div className="flex flex-col gap-2">
           <span className="text-xs font-medium">Days</span>
-          <span>
+          <span className="flex">
             {String(formatTime(timeLeft).days).padStart(2, "0")}
             <span className="text-button2 ml-2"> : </span>
           </span>
         </div>
         <div className="flex flex-col gap-2">
           <span className="text-xs font-medium">Hours</span>
-          <span>
+          <span className="flex">
             {String(formatTime(timeLeft).hours).padStart(2, "0")}
             <span className="text-button2 ml-2"> : </span>
           </span>
         </div>
         <div className="flex flex-col gap-2">
           <span className="text-xs font-medium">Minutes</span>
-          <span>
+          <span className="flex">
             {String(formatTime(timeLeft).minutes).padStart(2, "0")}
             <span className="text-button2 ml-2"> : </span>
           </span>

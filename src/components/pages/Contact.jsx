@@ -9,7 +9,7 @@ function Contact() {
         <span className="text-gray-400 ml-20">Home /</span> Contact
       </p>
 
-      <div className="flex justify-start mx-20 sm:flex-col lg:flex-row md:flex-col sm:gap-2 md:gap-8 sm:items-center sm:justify-center">
+      <div className="flex justify-start mx-20 xs:flex-col  md:flex-col lg:flex-row xs:gap-2 md:gap-8 xs:items-center xs:justify-center">
         <div className="container1 flex flex-col w-[340px] p-9 shadow-md my-20">
           <div className="flex gap-4">
             <img className="w-10 rounded-full" src={phone} alt="" />
@@ -37,7 +37,7 @@ function Contact() {
 
         <div className="shadow-md my-20">
           <div className="flex flex-col gap-[22px] mt-10 p-8">
-            <div className="flex gap-4 justify-center px-8 sm:flex-col md:flex-row">
+            <div className="flex gap-4 justify-center px-8 xs:flex-col md:flex-row">
               <TextField
                 required
                 id="standard-basic"
@@ -72,8 +72,8 @@ function Contact() {
               />
             </div>
 
-            <div className="flex justify-end mt-12">
-              <button className="bg-button2 text-white px-12 py-4 rounded-md">
+            <div className="flex mt-12 xs:justify-center md:justify-end">
+              <button className="bg-button2 text-white px-12 py-4 rounded-md border border-black hover:bg-white hover:text-button2">
                 Send Massage
               </button>
             </div>
