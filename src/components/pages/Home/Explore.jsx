@@ -1,13 +1,8 @@
 import { Link } from "react-router-dom";
 import Product from "../../Product";
-import { useEffect } from "react";
-import Ratingg from "../../Ratingg";
+import RatingComponent from "../../Ratingg";
 
-function Explore({ products, setLimit, wishList, setWishListItems }) {
-  useEffect(() => {
-    setLimit(8);
-  }, [setLimit]);
-
+function Explore({ products, wishList, setWishListItems }) {
   return (
     <div className="flex flex-col gap-10 text-start">
       <div className="flex gap-4 items-center xs:justify-center md:justify-start">
@@ -22,25 +17,27 @@ function Explore({ products, setLimit, wishList, setWishListItems }) {
           View All
         </Link>
       </div>
+
       <div className="flex flex-wrap gap-[30px] justify-center">
-        {products?.map((product) => {
-          return (
-            <div key={product.id}>
-              <Product
-                id={product.id}
-                name={product.title}
-                price={product.price}
-                discount={product.discountPercentage}
-                image={product.images[0]}
-                setWishListItems={setWishListItems}
-                isWishList={wishList.includes(product.id)}
-              />
-              <div className="flex text-sm gap-2 items-center mt-2 ">
-                <Ratingg rating={product.rating} />
-                <p>({product.reviews.length})</p>
+        {products?.map((product, index) => {
+          if (index < 8)
+            return (
+              <div key={index}>
+                <Product
+                  id={product.id}
+                  name={product.title}
+                  price={product.price}
+                  discount={product.discountPercentage}
+                  image={product.images[0]}
+                  setWishListItems={setWishListItems}
+                  isWishList={wishList.includes(product.id)}
+                />
+                <div className="flex text-sm gap-2 items-center mt-2 ">
+                  <RatingComponent rating={product.rating} />
+                  <p>({product.reviews.length})</p>
+                </div>
               </div>
-            </div>
-          );
+            );
         })}
       </div>
 

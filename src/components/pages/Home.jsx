@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from "react";
-import ProductsData from "../../ProductsData";
+import { useContext } from "react";
 import FirstSection from "./Home/FirstSection";
 import FlashSales from "./Home/FlashSales";
 import BrowseByCategory from "./Home/BrowseByCategory";
@@ -12,8 +11,7 @@ import uparrow from "../../assets/Home/uparrow.png";
 import { ProductContext } from "../../ProductContext";
 
 function Home() {
-  const [products, setProducts] = useState([]);
-  const [limit, setLimit] = useState(4);
+  const products = useContext(ProductContext).products;
   const wishList = useContext(ProductContext).wishList;
   const setWishListItems = useContext(ProductContext).setWishListItems;
 
@@ -24,9 +22,6 @@ function Home() {
     });
   };
 
-  useEffect(() => {
-    ProductsData(limit).then((data) => setProducts(data));
-  }, [limit]);
   return (
     <div className="flex flex-col gap-[140px] mb-[140px] xs:mx-20 md:mx-[135px] relative">
       <FirstSection />
@@ -44,8 +39,6 @@ function Home() {
       <img src={ad2} alt="" />
       <Explore
         products={products}
-        limit={limit}
-        setLimit={setLimit}
         wishList={wishList}
         setWishListItems={setWishListItems}
       />

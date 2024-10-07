@@ -1,23 +1,18 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import Product from "../Product";
 import productsData from "../../ProductsData";
-import Ratingg from "../Ratingg";
+import RatingComponent from "../Ratingg";
 import { ProductContext } from "../../ProductContext";
+
 function WishList() {
-  const [products, setProducts] = useState([]);
+  const products = useContext(ProductContext).products;
   const wishList = useContext(ProductContext).wishList;
   const setWishListItems = useContext(ProductContext).setWishListItems;
-
-  useEffect(() => {
-    productsData().then((data) => {
-      setProducts(data);
-    });
-  }, []);
 
   const handleMoveAllToBag = () => {
     // Add logic to move all wishlist items to the bag
     // For now, just clearing the wishlist
-    // setWishList([]);
+    setWishListItems([]);
   };
 
   return (
@@ -69,7 +64,7 @@ function WishList() {
               isWishList={wishList.includes(product.id)}
             />
             <div className="flex text-sm gap-2 items-center mt-2 ">
-              <Ratingg rating={product.rating} />
+              <RatingComponent rating={product.rating} />
               <p>({product.reviews.length})</p>
             </div>
           </div>
