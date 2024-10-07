@@ -28,9 +28,7 @@ const fetchSingleProduct = async (id) => {
 };
 
 export const ProductProvider = ({ children }) => {
-  const [wishList, setWishList] = useState(
-    JSON.parse(localStorage.getItem("wishList")) || []
-  );
+  const [wishList, setWishList] = useState([]);
   const [products, setProducts] = useState([]);
   const [limit, setLimit] = useState(8);
   const [category, setCategory] = useState("");
@@ -38,11 +36,11 @@ export const ProductProvider = ({ children }) => {
   const [id, setId] = useState(null);
 
   const setWishListItems = (id) => {
-    setWishList((prevWishList) =>
-      prevWishList.includes(id)
+    setWishList((prevWishList) => {
+      return prevWishList.includes(id)
         ? prevWishList.filter((item) => item !== id)
-        : [...prevWishList, id]
-    );
+        : [...prevWishList, id];
+    });
   };
 
   useEffect(() => {
@@ -50,15 +48,20 @@ export const ProductProvider = ({ children }) => {
       const data = localStorage.getItem("wishList");
       if (data) {
         setWishList(JSON.parse(data));
+      } else {
+        setWishList([]); // Set to empty array if no data found
       }
     };
+
     loadWishList();
   }, []);
 
+  // Save wishlist to localStorage when it changes
   useEffect(() => {
     localStorage.setItem("wishList", JSON.stringify(wishList));
-  }, [wishList]);
+  }, [wishList, setWishList]);
 
+  // Fetch products based on category and limit
   useEffect(() => {
     const fetchProducts = async () => {
       const data = await fetchProductsData(category, limit);
@@ -68,13 +71,16 @@ export const ProductProvider = ({ children }) => {
     fetchProducts();
   }, [category, limit]);
 
+  // Fetch single product by id
   useEffect(() => {
-    const fetchProduct = async () => {
-      const data = await fetchSingleProduct(id);
-      setProduct(data);
-    };
-    fetchProduct();
-  }, []);
+    if (id !== null) {
+      const fetchProduct = async () => {
+        const data = await fetchSingleProduct(id);
+        setProduct(data);
+      };
+      fetchProduct();
+    }
+  }, [id]);
 
   return (
     <ProductContext.Provider
@@ -91,6 +97,7 @@ export const ProductProvider = ({ children }) => {
         product,
         setId,
         setProduct,
+        setWishList,
       }}
     >
       {children}
