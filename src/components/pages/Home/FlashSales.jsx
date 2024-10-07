@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import Product from "../../Product";
-import rating from "../../../assets/rating.png";
 import CountdownTimer from "../../common/CountdownTimer";
 import Ratingg from "../../Ratingg";
 
-function FlashSales({ products }) {
+function FlashSales({ products, wishList, setWishListItems }) {
   return (
     <div className="flex flex-col gap-10 text-start  xs:items-center md:items-start">
       <div className="flex gap-4 items-center">
@@ -27,6 +26,8 @@ function FlashSales({ products }) {
                   price={product.price}
                   discount={product.discountPercentage}
                   image={product.images[0]}
+                  setWishListItems={setWishListItems}
+                  isWishList={wishList.includes(product.id)}
                 />
                 <div className="flex text-sm gap-2 items-center mt-2 ">
                   <Ratingg rating={product.rating} />

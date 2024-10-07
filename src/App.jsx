@@ -13,27 +13,30 @@ import Products from "./components/pages/Products";
 import ProductView from "./components/pages/ProductView";
 import Cart from "./components/pages/Cart";
 import Checkout from "./components/pages/CheckOut";
+import { ProductProvider } from "./ProductContext";
 
 function App() {
   return (
     <div className="font-poppins">
-      <Router>
-        <Header />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<LogIn />} />
-          <Route path="/wishlist" element={<WishList />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/products/:id" element={<ProductView />} />
-          <Route path="*" element={<Error />} />
-        </Routes>
-        <Footer />
-      </Router>
+      <ProductProvider>
+        <Router>
+          <Header />
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<LogIn />} />
+            <Route path="/wishlist" element={<WishList />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/products/:id" element={<ProductView />} />
+            <Route path="*" element={<Error />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </ProductProvider>
     </div>
   );
 }

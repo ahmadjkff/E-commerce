@@ -1,10 +1,13 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback, useContext } from "react";
 import ProductsData from "../../ProductsData";
 import Product from "../Product";
+import { ProductContext } from "../../ProductContext";
 
 function Products() {
   const [products, setProducts] = useState([]);
   const limit = useRef(10);
+  const wishList = useContext(ProductContext).wishList;
+  const setWishListItems = useContext(ProductContext).setWishListItems;
 
   const fetchProductsData = useCallback(() => {
     ProductsData(limit.current).then((data) => setProducts(data));
@@ -28,6 +31,8 @@ function Products() {
             price={product.price}
             discount={product.discountPercentage}
             image={product.images[0]}
+            setWishListItems={setWishListItems}
+            isWishList={wishList.includes(product.id)}
           />
         ))}
       </div>

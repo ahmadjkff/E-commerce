@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import Product from "../../Product";
-import rating from "../../../assets/rating.png";
 import Ratingg from "../../Ratingg";
 
-function BestSelling({ products }) {
+function BestSelling({ products, wishList, setWishListItems }) {
   return (
     <div className="flex flex-col gap-10 text-start ">
       <div className="flex gap-4 items-center xs:justify-center md:justify-start">
@@ -29,6 +28,8 @@ function BestSelling({ products }) {
                   price={product.price}
                   discount={product.discountPercentage}
                   image={product.images[0]}
+                  setWishListItems={setWishListItems}
+                  isWishList={wishList.includes(product.id)}
                 />
                 <div className="flex text-sm gap-2 items-center mt-2 ">
                   <Ratingg rating={product.rating} />

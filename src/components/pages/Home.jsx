@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ProductsData from "../../ProductsData";
 import FirstSection from "./Home/FirstSection";
 import FlashSales from "./Home/FlashSales";
@@ -9,10 +9,13 @@ import New from "./Home/New";
 import Services from "./Home/Services";
 import ad2 from "../../assets/Home/ad2.png";
 import uparrow from "../../assets/Home/uparrow.png";
+import { ProductContext } from "../../ProductContext";
 
 function Home() {
   const [products, setProducts] = useState([]);
   const [limit, setLimit] = useState(4);
+  const wishList = useContext(ProductContext).wishList;
+  const setWishListItems = useContext(ProductContext).setWishListItems;
 
   const moveTop = () => {
     window.scrollTo({
@@ -27,11 +30,25 @@ function Home() {
   return (
     <div className="flex flex-col gap-[140px] mb-[140px] xs:mx-20 md:mx-[135px] relative">
       <FirstSection />
-      <FlashSales products={products} />
+      <FlashSales
+        products={products}
+        wishList={wishList}
+        setWishListItems={setWishListItems}
+      />
       <BrowseByCategory />
-      <BestSelling products={products} />
+      <BestSelling
+        products={products}
+        wishList={wishList}
+        setWishListItems={setWishListItems}
+      />
       <img src={ad2} alt="" />
-      <Explore products={products} limit={limit} setLimit={setLimit} />
+      <Explore
+        products={products}
+        limit={limit}
+        setLimit={setLimit}
+        wishList={wishList}
+        setWishListItems={setWishListItems}
+      />
       <New />
       <Services />
       <button

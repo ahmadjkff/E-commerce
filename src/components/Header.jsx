@@ -4,6 +4,8 @@ import favorait from "../assets/fav.png";
 import cart from "../assets/cart.png";
 import Menu from "./Menu";
 import LongMenu from "./LongMenu";
+import { useContext } from "react";
+import { ProductContext } from "../ProductContext";
 
 const options = [
   { name: "Home", to: "/" },
@@ -13,6 +15,7 @@ const options = [
 ];
 
 function Header() {
+  const wishListLength = useContext(ProductContext).wishList.length;
   return (
     <header className="flex justify-between my-10 border-b-2 w-full xs:px-10 sm:px-16 md:px-20 pb-4">
       <div className=" xs:hidden sm:hidden md:block lg:block xl:block">
@@ -79,7 +82,9 @@ function Header() {
             <Link to="/wishlist">
               <img src={favorait} alt="" width={32} />
               <div className="absolute bg-button2 rounded-full w-4 h-4 top-0 right-0">
-                <p className="text-xs text-white text-center">4</p>
+                <p className="text-xs text-white text-center">
+                  {wishListLength}
+                </p>
               </div>
             </Link>
           </div>

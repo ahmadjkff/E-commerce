@@ -1,15 +1,15 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import CircularSize from "../Loading";
-import rating from "../../assets/rating.png";
 import favorait from "../../assets/fav.png";
 import truck2 from "../../assets/truck2.png";
 import returnIcon from "../../assets/return.png";
 import Product from "../Product";
 import fetchSingleProduct from "../../fetchSingleProduct";
 import ProductsData from "../../ProductsData";
-import { Category } from "@mui/icons-material";
 import Ratingg from "../Ratingg";
+import { ProductContext } from "../../ProductContext";
+
 const SIZES = ["XS", "S", "M", "L", "XL"];
 
 function ProductView() {
@@ -21,6 +21,8 @@ function ProductView() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const category = `${product?.category}`;
+  const wishList = useContext(ProductContext).wishList;
+  const setWishListItems = useContext(ProductContext).setWishListItems;
 
   useEffect(() => {
     setLoading(true); // Set loading to true before fetching the product
@@ -161,8 +163,19 @@ function ProductView() {
             <button className="bg-button2 py-3 text-white rounded-md w-[165px]">
               Buy Now
             </button>
-            <button className="border w-[40px] h-[40px] py-1 px-1 hover:bg-button2 rounded-md">
-              <img src={favorait} alt="" width={32} height={32} />
+            <button
+              className="border w-[40px] h-[40px] py-1 px-1 hover:bg-button2 rounded-md"
+              onClick={() => setWishListItems(parseInt(id))}
+            >
+              <img
+                className={`${
+                  wishList.includes(parseInt(id)) ? "bg-button2" : ""
+                }`}
+                src={favorait}
+                alt=""
+                width={32}
+                height={32}
+              />
             </button>
           </div>
 
@@ -217,6 +230,8 @@ function ProductView() {
                     price={product.price}
                     discount={product.discountPercentage}
                     image={product.images[0]}
+                    setWishListItems={setWishListItems}
+                    isWishList={wishList.includes(product?.id)}
                   />
                   <div className="flex text-sm gap-2 items-center mt-2 ">
                     <Ratingg rating={product.rating} />

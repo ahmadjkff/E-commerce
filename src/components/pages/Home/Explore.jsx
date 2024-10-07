@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import Product from "../../Product";
-import rating from "../../../assets/rating.png";
 import { useEffect } from "react";
 import Ratingg from "../../Ratingg";
 
-function Explore({ products, limit, setLimit }) {
+function Explore({ products, setLimit, wishList, setWishListItems }) {
   useEffect(() => {
     setLimit(8);
   }, [setLimit]);
@@ -33,6 +32,8 @@ function Explore({ products, limit, setLimit }) {
                 price={product.price}
                 discount={product.discountPercentage}
                 image={product.images[0]}
+                setWishListItems={setWishListItems}
+                isWishList={wishList.includes(product.id)}
               />
               <div className="flex text-sm gap-2 items-center mt-2 ">
                 <Ratingg rating={product.rating} />

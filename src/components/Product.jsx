@@ -3,7 +3,15 @@ import fav from "../assets/fav.png";
 import view from "../assets/view.png";
 import { useMemo } from "react";
 
-function Product({ id, name, price, discount, image }) {
+function Product({
+  id,
+  name,
+  price,
+  discount,
+  image,
+  setWishListItems,
+  isWishList,
+}) {
   const priceAfterDiscount = useMemo(() => {
     return (price - (price * Math.floor(discount)) / 100).toFixed(2);
   }, [price, discount]);
@@ -26,12 +34,19 @@ function Product({ id, name, price, discount, image }) {
             </div>
           )}
         </div>
-        <Link
-          to="/cart"
-          className="absolute top-3 right-2 rounded-full bg-white p-1 hover:bg-button2 transition duration-300"
+        <button
+          onClick={() => setWishListItems(id)}
+          className={`absolute top-3 right-2 rounded-full bg-white p-1 transition duration-300 hover:bg-button2 ${
+            isWishList ? "bg-button2" : ""
+          }`}
         >
-          <img src={fav} alt="" width={24} />
-        </Link>
+          <img
+            className={`${isWishList ? "bg-button2 rounded-full" : ""}`}
+            src={fav}
+            alt=""
+            width={24}
+          />
+        </button>
         <Link
           to={`/products/${id}`}
           className="absolute top-[55px] right-2 rounded-full bg-white p-2 hover:bg-button2 transition duration-300"
