@@ -28,7 +28,10 @@ const fetchSingleProduct = async (id) => {
 };
 
 export const ProductProvider = ({ children }) => {
-  const [wishList, setWishList] = useState([]);
+  const [wishList, setWishList] = useState(
+    JSON.parse(localStorage.getItem("wishlist")) || []
+  );
+
   const [products, setProducts] = useState([]);
   const [limit, setLimit] = useState(8);
   const [category, setCategory] = useState("");
@@ -36,20 +39,20 @@ export const ProductProvider = ({ children }) => {
   const [id, setId] = useState(null);
 
   const setWishListItems = (id) => {
-    setWishList((prevWishList) => {
-      return prevWishList.includes(id)
+    setWishList((prevWishList) =>
+      prevWishList.includes(id)
         ? prevWishList.filter((item) => item !== id)
-        : [...prevWishList, id];
-    });
+        : [...prevWishList, id]
+    );
   };
 
   useEffect(() => {
     const loadWishList = () => {
-      const data = localStorage.getItem("wishList");
+      const data = localStorage.getItem("wishlist"); // Make sure this key is consistent
       if (data) {
         setWishList(JSON.parse(data));
       } else {
-        setWishList([]); // Set to empty array if no data found
+        setWishList([]); // Initialize with an empty array if no data exists
       }
     };
 
@@ -57,9 +60,10 @@ export const ProductProvider = ({ children }) => {
   }, []);
 
   // Save wishlist to localStorage when it changes
+  // Save wishlist to localStorage when it changes
   useEffect(() => {
-    localStorage.setItem("wishList", JSON.stringify(wishList));
-  }, [wishList, setWishList]);
+    localStorage.setItem("wishlist", JSON.stringify(wishList)); // Ensure consistent key: "wishlist"
+  }, [wishList]);
 
   // Fetch products based on category and limit
   useEffect(() => {

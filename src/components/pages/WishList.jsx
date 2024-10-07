@@ -8,18 +8,18 @@ function WishList() {
   const wishList = useContext(ProductContext).wishList;
   const setWishListItems = useContext(ProductContext).setWishListItems;
 
-  const handleMoveAllToBag = () => {
-    // Add logic to move all wishlist items to the bag
-    // For now, just clearing the wishlist
-    setWishListItems([]);
-  };
+  // const handleMoveAllToBag = () => {
+  //   // Add logic to move all wishlist items to the bag
+  //   // For now, just clearing the wishlist
+  //   setWishListItems([]);
+  // };
 
   return (
     <div className="flex flex-col xs:px-10 sm:px-20 md:px-[135px]">
       <div className="flex gap-5 mb-16 items-center justify-between">
         <h1 className="text-xl">WishList ({wishList.length})</h1>
         <button
-          onClick={handleMoveAllToBag}
+          // onClick={handleMoveAllToBag}
           className="border mt-4 xs:px-4 sm:px-6 sm:py-2 md:px-12 md:py-4 rounded-md hover:border-black hover:bg-button2 hover:text-white"
         >
           Move All To Bag
