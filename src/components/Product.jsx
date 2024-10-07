@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import fav from "../assets/fav.png";
+import fav from "../assets/Product/favoraite.png";
 import view from "../assets/view.png";
 import { useMemo } from "react";
 
