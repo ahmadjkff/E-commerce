@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import FirstSection from "./Home/FirstSection";
 import FlashSales from "./Home/FlashSales";
 import BrowseByCategory from "./Home/BrowseByCategory";
@@ -11,15 +11,25 @@ import uparrow from "../../assets/Home/uparrow.png";
 import { ProductContext } from "../../ProductContext";
 
 function Home() {
-  const products = useContext(ProductContext).products;
-  const wishList = useContext(ProductContext).wishList;
-  const setWishListItems = useContext(ProductContext).setWishListItems;
+  const {
+    fetchProductsData,
+    setProducts,
+    products,
+    wishList,
+    setWishListItems,
+  } = useContext(ProductContext);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const data = await fetchProductsData("", 8); // Fetch first 8 products
+      setProducts(data);
+    };
+
+    fetchProducts();
+  }, [fetchProductsData, setProducts]);
 
   const moveTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -36,7 +46,7 @@ function Home() {
         wishList={wishList}
         setWishListItems={setWishListItems}
       />
-      <img src={ad2} alt="" />
+      <img src={ad2} alt="Advertisement" />
       <Explore
         products={products}
         wishList={wishList}
@@ -47,8 +57,9 @@ function Home() {
       <button
         className="fixed bottom-8 right-8 p-3 rounded-full bg-secondary"
         onClick={moveTop}
+        aria-label="Scroll to top"
       >
-        <img src={uparrow} alt="" width={24} />
+        <img src={uparrow} alt="Scroll to top" width={24} />
       </button>
     </div>
   );

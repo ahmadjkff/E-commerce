@@ -1,19 +1,29 @@
-import React, { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const ProductContext = createContext();
 
-const productsData = async (category, limit) => {
-  try {
-    const url = category
-      ? `https://dummyjson.com/products/category/${category}?limit=${limit}`
-      : `https://dummyjson.com/products?limit=${limit}`;
+const fetchProductsData = async (category = "", limit) => {
+  const url = category
+    ? `https://dummyjson.com/products/category/${category}?limit=${limit}`
+    : `https://dummyjson.com/products?limit=${limit}`;
 
+  try {
     const response = await fetch(url);
     const data = await response.json();
-    return data.products;
+    return data.products || []; // Return an empty array if products are undefined
+  } catch (error) {
+    console.error("Failed to fetch products:", error);
+    return [];
+  }
+};
+
+const fetchSingleProduct = async (id) => {
+  try {
+    const response = await fetch(`https://dummyjson.com/products/${id}`);
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.log(error);
-    return [];
   }
 };
 
@@ -22,15 +32,17 @@ export const ProductProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("wishList")) || []
   );
   const [products, setProducts] = useState([]);
-  const [limit, setLimit] = useState(0);
+  const [limit, setLimit] = useState(8);
   const [category, setCategory] = useState("");
+  const [product, setProduct] = useState(null);
+  const [id, setId] = useState(null);
 
   const setWishListItems = (id) => {
-    if (!wishList.includes(id)) {
-      setWishList((prevWishList) => [...prevWishList, id]);
-    } else {
-      setWishList((prevWishList) => prevWishList.filter((item) => item !== id));
-    }
+    setWishList((prevWishList) =>
+      prevWishList.includes(id)
+        ? prevWishList.filter((item) => item !== id)
+        : [...prevWishList, id]
+    );
   };
 
   useEffect(() => {
@@ -44,19 +56,25 @@ export const ProductProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    const saveWishList = () => {
-      localStorage.setItem("wishList", JSON.stringify(wishList));
-    };
-    saveWishList();
+    localStorage.setItem("wishList", JSON.stringify(wishList));
   }, [wishList]);
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const data = await productsData(category, limit); // Adjust the limit and category as needed
+      const data = await fetchProductsData(category, limit);
       setProducts(data);
     };
+
     fetchProducts();
   }, [category, limit]);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const data = await fetchSingleProduct(id);
+      setProduct(data);
+    };
+    fetchProduct();
+  }, []);
 
   return (
     <ProductContext.Provider
@@ -67,6 +85,12 @@ export const ProductProvider = ({ children }) => {
         limit,
         setLimit,
         setCategory,
+        fetchProductsData,
+        setProducts,
+        fetchSingleProduct,
+        product,
+        setId,
+        setProduct,
       }}
     >
       {children}

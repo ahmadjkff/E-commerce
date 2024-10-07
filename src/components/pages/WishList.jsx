@@ -1,6 +1,5 @@
 import { useContext, useEffect } from "react";
 import Product from "../Product";
-import productsData from "../../ProductsData";
 import RatingComponent from "../Ratingg";
 import { ProductContext } from "../../ProductContext";
 
