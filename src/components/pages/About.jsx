@@ -18,9 +18,9 @@ function About() {
       <p className="text-start ml-20">
         <span className="text-gray-400">Home /</span> About
       </p>
-      <div className="flex flex-col gap-[75px] mb-20 sm:items-center md:justify-center">
+      <div className="flex flex-col gap-[75px] mb-20 xs:items-center xs:justify-center md:justify-center">
         <div className="flex xs:flex-col  md:flex-row">
-          <div className="flex flex-col gap-6 px-[75px] mt-[179px] text-start">
+          <div className="flex flex-col gap-6 px-[75px] mt-[179px] text-start xs:px-40">
             <h1 className="text-[54px] font-semibold">Our Story</h1>
             <p>
               Launced in 2015, Exclusive is South Asia’s premier online shopping
