@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Product from "../../Product";
-import Ratingg from "../../Ratingg";
+import RatingComponent from "../../Ratingg";
 
 function BestSelling({ products, wishList, setWishListItems }) {
   return (
@@ -32,7 +32,7 @@ function BestSelling({ products, wishList, setWishListItems }) {
                   isWishList={wishList.includes(product.id)}
                 />
                 <div className="flex text-sm gap-2 items-center mt-2 ">
-                  <Ratingg rating={product.rating} />
+                  <RatingComponent rating={product.rating} />
                   <p>({product.reviews.length})</p>
                 </div>
               </div>

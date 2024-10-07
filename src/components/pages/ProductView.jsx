@@ -7,7 +7,7 @@ import returnIcon from "../../assets/return.png";
 import Product from "../Product";
 import fetchSingleProduct from "../../fetchSingleProduct";
 import ProductsData from "../../ProductsData";
-import Ratingg from "../Ratingg";
+import RatingComponent from "../Ratingg";
 import { ProductContext } from "../../ProductContext";
 
 const SIZES = ["XS", "S", "M", "L", "XL"];
@@ -92,7 +92,7 @@ function ProductView() {
           <h1 className="text-2xl font-semibold">{product?.title}</h1>
           <div className="flex items-center gap-4">
             <div className="flex gap-2">
-              <Ratingg rating={product?.rating} />
+              <RatingComponent rating={product?.rating} />
               <p className="text-sm">({product?.reviews?.length})</p>
             </div>
             <div className="flex items-center gap-2">
@@ -234,7 +234,7 @@ function ProductView() {
                     isWishList={wishList.includes(product?.id)}
                   />
                   <div className="flex text-sm gap-2 items-center mt-2 ">
-                    <Ratingg rating={product.rating} />
+                    <RatingComponent rating={product.rating} />
                     <p>({product.reviews.length})</p>
                   </div>
                 </div>

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Product from "../../Product";
 import CountdownTimer from "../../common/CountdownTimer";
-import Ratingg from "../../Ratingg";
+import RatingComponent from "../../Ratingg";
 
 function FlashSales({ products, wishList, setWishListItems }) {
   return (
@@ -30,7 +30,7 @@ function FlashSales({ products, wishList, setWishListItems }) {
                   isWishList={wishList.includes(product.id)}
                 />
                 <div className="flex text-sm gap-2 items-center mt-2 ">
-                  <Ratingg rating={product.rating} />
+                  <RatingComponent rating={product.rating} />
                   <p>({product.reviews.length})</p>
                 </div>
               </div>
