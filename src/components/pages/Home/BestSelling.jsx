@@ -29,7 +29,8 @@ function BestSelling({ products, wishList, setWishListItems }) {
                   discount={product.discountPercentage}
                   image={product.images[0]}
                   setWishListItems={setWishListItems}
-                  isWishList={wishList.includes(product.id)}
+                  isWishList={wishList.some((item) => item.id === product.id)}
+                  productData={product}
                 />
                 <div className="flex text-sm gap-2 items-center mt-2 ">
                   <RatingComponent rating={product.rating} />

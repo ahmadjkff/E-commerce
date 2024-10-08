@@ -38,12 +38,16 @@ export const ProductProvider = ({ children }) => {
   const [product, setProduct] = useState(null);
   const [id, setId] = useState(null);
 
-  const setWishListItems = (id) => {
-    setWishList((prevWishList) =>
-      prevWishList.includes(id)
-        ? prevWishList.filter((item) => item !== id)
-        : [...prevWishList, id]
-    );
+  const setWishListItems = (product) => {
+    setWishList((prevWishList) => {
+      const isProductInWishlist = prevWishList.some(
+        (item) => item.id === product.id
+      );
+
+      return isProductInWishlist
+        ? prevWishList.filter((item) => item.id !== product.id)
+        : [...prevWishList, product];
+    });
   };
 
   useEffect(() => {

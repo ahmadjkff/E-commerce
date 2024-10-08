@@ -71,7 +71,6 @@ function ProductView() {
 
   return (
     <div className="flex flex-col mx-[135px] my-[140px]">
-      {/* Product Images and Details */}
       <div className="flex gap-[30px] mb-[140px] xs:flex-col md:flex-col lg:flex-row xs:items-center">
         <div className="grid gap-4 gap-x-52 xs:grid-cols-2 lg:grid-cols-1 xs:mr-40">
           {[...Array(4)].map((_, index) => (
@@ -124,9 +123,9 @@ function ProductView() {
               {["red", "blue"].map((color) => (
                 <button
                   key={color}
-                  className={`w-6 h-6 bg-${color}-400 rounded-full ${
-                    selectedColor === color ? "border-2 border-black" : ""
-                  }`}
+                  className={`w-6 h-6 rounded-full ${
+                    selectedColor === color ? "border-[3px] border-black" : ""
+                  } ${color === "red" ? "bg-red-500" : "bg-blue-500"}`}
                   onClick={() => handleColorSelect(color)}
                 />
               ))}
@@ -171,11 +170,13 @@ function ProductView() {
             </button>
             <button
               className="border w-[40px] h-[40px] py-1 px-1 hover:bg-button2 rounded-md"
-              onClick={() => setWishListItems(parseInt(id))}
+              onClick={() => setWishListItems(product)}
             >
               <img
                 className={`${
-                  wishList.includes(parseInt(id)) ? "bg-button2" : ""
+                  wishList.some((item) => item?.id === parseInt(id))
+                    ? "bg-button2"
+                    : ""
                 }`}
                 src={favorait}
                 alt=""

@@ -3,11 +3,8 @@ import Product from "../Product";
 import { ProductContext } from "../../ProductContext";
 
 function Products() {
-  const products = useContext(ProductContext).products;
-  const limit = useContext(ProductContext).limit;
-  const setLimit = useContext(ProductContext).setLimit;
-  const wishList = useContext(ProductContext).wishList;
-  const setWishListItems = useContext(ProductContext).setWishListItems;
+  const { products, wishList, setWishListItems, setLimit, limit } =
+    useContext(ProductContext);
 
   useEffect(() => {
     setLimit(10);
@@ -21,13 +18,15 @@ function Products() {
       <div className="flex  gap-8 flex-wrap">
         {products.map((product) => (
           <Product
-            id={product.id}
-            name={product.title}
-            price={product.price}
-            discount={product.discountPercentage}
-            image={product.images[0]}
+            id={product?.id}
+            name={product?.title}
+            price={product?.price}
+            discount={product?.discountPercentage}
+            image={product?.images?.[0] || ""}
             setWishListItems={setWishListItems}
-            isWishList={wishList.includes(product.id)}
+            isWishList={wishList.some((item) => item?.id === product?.id)}
+            productData={product}
+            key={product?.id}
           />
         ))}
       </div>

@@ -1,45 +1,33 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import Product from "../Product";
 import RatingComponent from "../Ratingg";
 import { ProductContext } from "../../ProductContext";
 
 function WishList() {
-  const products = useContext(ProductContext).products;
-  const wishList = useContext(ProductContext).wishList;
-  const setWishListItems = useContext(ProductContext).setWishListItems;
-
-  // const handleMoveAllToBag = () => {
-  //   // Add logic to move all wishlist items to the bag
-  //   // For now, just clearing the wishlist
-  //   setWishListItems([]);
-  // };
+  const { products, wishList, setWishListItems } = useContext(ProductContext);
 
   return (
     <div className="flex flex-col xs:px-10 sm:px-20 md:px-[135px]">
       <div className="flex gap-5 mb-16 items-center justify-between">
         <h1 className="text-xl">WishList ({wishList.length})</h1>
-        <button
-          // onClick={handleMoveAllToBag}
-          className="border mt-4 xs:px-4 sm:px-6 sm:py-2 md:px-12 md:py-4 rounded-md hover:border-black hover:bg-button2 hover:text-white"
-        >
+        <button className="border mt-4 xs:px-4 sm:px-6 sm:py-2 md:px-12 md:py-4 rounded-md hover:border-black hover:bg-button2 hover:text-white">
           Move All To Bag
         </button>
       </div>
       <div className="flex flex-wrap gap-[30px] mb-20 justify-center">
-        {products.map((product) =>
-          wishList.includes(product.id) ? (
-            <Product
-              key={product.id}
-              id={product.id}
-              name={product.title}
-              price={product.price}
-              discount={product.discountPercentage}
-              image={product.images[0]}
-              setWishListItems={setWishListItems}
-              isWishList={wishList.includes(product.id)}
-            />
-          ) : null
-        )}
+        {wishList.map((product) => (
+          <Product
+            key={product?.id}
+            id={product?.id}
+            name={product?.title}
+            price={product?.price}
+            discount={product?.discountPercentage}
+            image={product?.images?.[0] || ""}
+            setWishListItems={setWishListItems}
+            isWishList={wishList.some((item) => item?.id === product?.id)}
+            productData={product}
+          />
+        ))}
       </div>
       <div className="flex gap-5 mb-16 items-center justify-between">
         <div className="flex items-center gap-2">
@@ -52,19 +40,20 @@ function WishList() {
       </div>
       <div className="flex flex-wrap gap-[30px] mb-36 justify-center">
         {products.slice(0, 4).map((product) => (
-          <div key={product.id}>
+          <div key={product?.id}>
             <Product
-              id={product.id}
-              name={product.title}
-              price={product.price}
-              discount={product.discountPercentage}
-              image={product.images[0]}
+              id={product?.id}
+              name={product?.title}
+              price={product?.price}
+              discount={product?.discountPercentage}
+              image={product?.images?.[0] || ""}
               setWishListItems={setWishListItems}
-              isWishList={wishList.includes(product.id)}
+              isWishList={wishList.some((item) => item?.id === product?.id)}
+              productData={product}
             />
-            <div className="flex text-sm gap-2 items-center mt-2 ">
-              <RatingComponent rating={product.rating} />
-              <p>({product.reviews.length})</p>
+            <div className="flex text-sm gap-2 items-center mt-2">
+              <RatingComponent rating={product?.rating} />
+              <p>({product?.reviews?.length})</p>
             </div>
           </div>
         ))}
