@@ -4,13 +4,20 @@ import RatingComponent from "../RatingComponent";
 import { ProductContext } from "../../ProductContext";
 
 function WishList() {
-  const { products, wishList } = useContext(ProductContext);
+  const { products, wishList, setWishList, setCartItems } =
+    useContext(ProductContext);
 
   return (
     <div className="flex flex-col xs:px-10 sm:px-20 md:px-[135px]">
       <div className="flex gap-5 mb-16 items-center justify-between">
         <h1 className="text-xl">WishList ({wishList.length})</h1>
-        <button className="border mt-4 xs:px-4 sm:px-6 sm:py-2 md:px-12 md:py-4 rounded-md hover:border-black hover:bg-button2 hover:text-white">
+        <button
+          className="border mt-4 xs:px-4 sm:px-6 sm:py-2 md:px-12 md:py-4 rounded-md hover:border-black hover:bg-button2 hover:text-white"
+          onClick={() => {
+            wishList.forEach((item) => setCartItems(item));
+            setWishList([]);
+          }}
+        >
           Move All To Bag
         </button>
       </div>
