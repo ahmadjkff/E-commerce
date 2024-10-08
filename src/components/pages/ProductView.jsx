@@ -5,7 +5,7 @@ import favorait from "../../assets/fav.png";
 import truck2 from "../../assets/truck2.png";
 import returnIcon from "../../assets/return.png";
 import Product from "../Product";
-import RatingComponent from "../Ratingg";
+import RatingComponent from "../RatingComponent";
 import { ProductContext } from "../../ProductContext";
 
 const SIZES = ["XS", "S", "M", "L", "XL"];

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Product from "../Product";
-import RatingComponent from "../Ratingg";
+import RatingComponent from "../RatingComponent";
 import { ProductContext } from "../../ProductContext";
 
 function WishList() {

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Product from "../../Product";
 import CountdownTimer from "../../common/CountdownTimer";
-import RatingComponent from "../../Ratingg";
+import RatingComponent from "../../RatingComponent";
 
 function FlashSales({ products, wishList, setWishListItems }) {
   return (
