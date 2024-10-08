@@ -11,7 +11,7 @@ import WishList from "./components/pages/WishList";
 import Footer from "./components/Footer";
 import Products from "./components/pages/Products";
 import ProductView from "./components/pages/ProductView";
-import Cart from "./components/pages/Cart";
+import Cart from "./components/pages/Cart/Cart";
 import Checkout from "./components/pages/CheckOut";
 import { ProductProvider } from "./ProductContext";
 

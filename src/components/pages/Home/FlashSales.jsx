@@ -3,7 +3,7 @@ import Product from "../../Product";
 import CountdownTimer from "../../common/CountdownTimer";
 import RatingComponent from "../../RatingComponent";
 
-function FlashSales({ products, wishList, setWishListItems }) {
+function FlashSales({ products, wishList }) {
   return (
     <div className="flex flex-col gap-10 text-start  xs:items-center md:items-start">
       <div className="flex gap-4 items-center">
@@ -26,7 +26,6 @@ function FlashSales({ products, wishList, setWishListItems }) {
                   price={product.price}
                   discount={product.discountPercentage}
                   image={product.images[0]}
-                  setWishListItems={setWishListItems}
                   isWishList={wishList.some((item) => item.id === product.id)}
                   productData={product}
                 />

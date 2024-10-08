@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import fav from "../assets/Product/favoraite.png";
 import view from "../assets/view.png";
-import { useMemo, useState } from "react";
+import { useContext, useMemo, useState } from "react";
+import { ProductContext } from "../ProductContext";
 
 function Product({
   id,
@@ -9,19 +10,14 @@ function Product({
   price,
   discount,
   image,
-  setWishListItems,
   isWishList,
   productData,
 }) {
   const priceAfterDiscount = useMemo(() => {
     return (price - (price * Math.floor(discount)) / 100).toFixed(2);
   }, [price, discount]);
-
   const [isHovered, setIsHovered] = useState(false);
-
-  const handleAddToCart = () => {
-    console.log("Added to cart");
-  };
+  const { setWishListItems, setCartItems } = useContext(ProductContext);
 
   return (
     <div
@@ -43,7 +39,7 @@ function Product({
           </div>
         )}
         <button
-          onClick={() => setWishListItems(productData)} // Pass the entire product object
+          onClick={() => setWishListItems(productData)}
           className={`absolute top-3 right-2 rounded-full bg-white p-1 transition duration-300 hover:bg-button2 ${
             isWishList ? "bg-button2" : ""
           }`}
@@ -65,7 +61,7 @@ function Product({
           className={`absolute bottom-0 right-0 w-full h-8 bg-black text-white hover:text-yellow-200 ${
             isHovered ? "opacity-100" : "opacity-0"
           } transition duration-300`}
-          onClick={handleAddToCart}
+          onClick={() => setCartItems(productData)}
         >
           Add to Cart
         </button>

@@ -16,6 +16,7 @@ const options = [
 
 function Header() {
   const wishListLength = useContext(ProductContext).wishList.length;
+  const cartLength = useContext(ProductContext).cart?.length;
   return (
     <header className="flex justify-between my-10 border-b-2 w-full xs:px-10 sm:px-16 md:px-20 pb-4">
       <div className=" xs:hidden sm:hidden md:block lg:block xl:block">
@@ -95,8 +96,12 @@ function Header() {
           <div className="relative">
             <Link to="/cart">
               <img src={cart} alt="" width={32} />
-              <div className="absolute bg-button2 rounded-full w-4 h-4 top-0 right-0">
-                <p className="text-xs text-white text-center">4</p>
+              <div
+                className={`bg-button2 rounded-full w-4 h-4 top-0 right-0 ${
+                  cartLength ? "absolute" : "hidden"
+                }`}
+              >
+                <p className="text-xs text-white text-center">{cartLength}</p>
               </div>
             </Link>
           </div>

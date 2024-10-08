@@ -3,8 +3,7 @@ import Product from "../Product";
 import { ProductContext } from "../../ProductContext";
 
 function Products() {
-  const { products, wishList, setWishListItems, setLimit, limit } =
-    useContext(ProductContext);
+  const { products, wishList, setLimit, limit } = useContext(ProductContext);
 
   useEffect(() => {
     setLimit(10);
@@ -23,7 +22,6 @@ function Products() {
             price={product?.price}
             discount={product?.discountPercentage}
             image={product?.images?.[0] || ""}
-            setWishListItems={setWishListItems}
             isWishList={wishList.some((item) => item?.id === product?.id)}
             productData={product}
             key={product?.id}

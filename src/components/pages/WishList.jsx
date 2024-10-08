@@ -4,7 +4,7 @@ import RatingComponent from "../RatingComponent";
 import { ProductContext } from "../../ProductContext";
 
 function WishList() {
-  const { products, wishList, setWishListItems } = useContext(ProductContext);
+  const { products, wishList } = useContext(ProductContext);
 
   return (
     <div className="flex flex-col xs:px-10 sm:px-20 md:px-[135px]">
@@ -23,7 +23,6 @@ function WishList() {
             price={product?.price}
             discount={product?.discountPercentage}
             image={product?.images?.[0] || ""}
-            setWishListItems={setWishListItems}
             isWishList={wishList.some((item) => item?.id === product?.id)}
             productData={product}
           />
@@ -47,7 +46,6 @@ function WishList() {
               price={product?.price}
               discount={product?.discountPercentage}
               image={product?.images?.[0] || ""}
-              setWishListItems={setWishListItems}
               isWishList={wishList.some((item) => item?.id === product?.id)}
               productData={product}
             />

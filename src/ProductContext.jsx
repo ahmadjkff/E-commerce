@@ -37,6 +37,9 @@ export const ProductProvider = ({ children }) => {
   const [category, setCategory] = useState("");
   const [product, setProduct] = useState(null);
   const [id, setId] = useState(null);
+  const [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem("cart")) || []
+  );
 
   const setWishListItems = (product) => {
     setWishList((prevWishList) => {
@@ -47,6 +50,23 @@ export const ProductProvider = ({ children }) => {
       return isProductInWishlist
         ? prevWishList.filter((item) => item.id !== product.id)
         : [...prevWishList, product];
+    });
+  };
+
+  const setCartItems = (product) => {
+    setCart((prevCart) => {
+      const isProductInCart = prevCart.some((item) => item.id === product.id);
+      if (isProductInCart) {
+        window.alert("Product already in cart");
+        return [...prevCart];
+      }
+      return [...prevCart, product];
+    });
+  };
+
+  const removeCartItem = (id) => {
+    setCart((prevCart) => {
+      return prevCart.filter((item) => item.id !== id);
     });
   };
 
@@ -63,13 +83,14 @@ export const ProductProvider = ({ children }) => {
     loadWishList();
   }, []);
 
-  // Save wishlist to localStorage when it changes
-  // Save wishlist to localStorage when it changes
   useEffect(() => {
-    localStorage.setItem("wishlist", JSON.stringify(wishList)); // Ensure consistent key: "wishlist"
+    localStorage.setItem("wishlist", JSON.stringify(wishList));
   }, [wishList]);
 
-  // Fetch products based on category and limit
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
   useEffect(() => {
     const fetchProducts = async () => {
       const data = await fetchProductsData(category, limit);
@@ -79,7 +100,6 @@ export const ProductProvider = ({ children }) => {
     fetchProducts();
   }, [category, limit]);
 
-  // Fetch single product by id
   useEffect(() => {
     if (id !== null) {
       const fetchProduct = async () => {
@@ -106,6 +126,10 @@ export const ProductProvider = ({ children }) => {
         setId,
         setProduct,
         setWishList,
+        cart,
+        setCart,
+        setCartItems,
+        removeCartItem,
       }}
     >
       {children}

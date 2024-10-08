@@ -1,46 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-
-const products = [
-  {
-    id: 0,
-    name: "LCD Monitor",
-    price: 650,
-    quantity: 1,
-    image: "https://via.placeholder.com/52x52",
-  },
-  {
-    id: 1,
-    name: "H1 Gamepad",
-    price: 550,
-    quantity: 2,
-    image: "https://via.placeholder.com/52x52",
-  },
-];
+import CartCard from "./CartCard";
+import { ProductContext } from "../../../ProductContext";
 
 const Cart = () => {
-  const [cartProducts, setCartProducts] = useState(products);
+  const { cart } = useContext(ProductContext);
   const [total, setTotal] = useState(0);
 
-  const handleQuantityChange = (e, index) => {
-    const newQuantity = Number(e.target.value);
-    const updatedProducts = [...cartProducts];
-    updatedProducts[index].quantity = newQuantity;
-    setCartProducts(updatedProducts);
-  };
-
   useEffect(() => {
-    const newTotal = cartProducts.reduce(
-      (acc, product) => acc + product.price * product.quantity,
-      0
-    );
+    const newTotal = cart.reduce((acc, product) => acc + product.price * 1, 0);
     setTotal(newTotal);
-  }, [cartProducts]); // Recalculate total whenever cartProducts changes
-
-  const removeItem = (index) => {
-    const updatedProducts = cartProducts.filter((_, i) => i !== index);
-    setCartProducts(updatedProducts);
-  };
+  }, [cart]);
 
   return (
     <div className="w-full flex justify-center">
@@ -55,48 +25,11 @@ const Cart = () => {
             <span className="text-center">Quantity</span>
             <span className="text-center">Subtotal</span>
           </div>
-          {cartProducts.map((product, index) => (
-            <div
-              key={index}
-              className="items-center p-4 shadow-md border-gray-200 xs:flex-col lg:grid xs:grid-cols-1 lg:grid-cols-4"
-            >
-              <div className="flex items-center space-x-4">
-                <button
-                  className="text-red-500 text-xl"
-                  onClick={() => removeItem(index)}
-                >
-                  ❌
-                </button>
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-12 h-12 object-cover"
-                />
-                <span>{product.name}</span>
-              </div>
-              <div className="flex justify-between gap-4">
-                <span className="xs:block lg:hidden">Price:</span>
-                <span className="text-center">${product.price}</span>
-              </div>
-              <div className="flex justify-between gap-4">
-                <span className="xs:block lg:hidden">Quantity:</span>
-                <input
-                  type="number"
-                  value={product.quantity}
-                  onChange={(e) => handleQuantityChange(e, index)}
-                  className="w-16 px-2 py-1 border rounded text-center"
-                  min="1"
-                />
-              </div>
-              <div className="flex justify-between gap-4">
-                <span className="xs:block lg:hidden">Total:</span>
-                <span className="text-center">
-                  ${product.price * product.quantity}
-                </span>
-              </div>
-            </div>
+          {cart?.map((product, index) => (
+            <CartCard product={product} key={index} />
           ))}
         </div>
+        <div className="flex justify-between mb-20 gap-4"></div>
         <div className="flex justify-between mb-20 gap-4 xs:flex-col lg:flex-row">
           <button className="px-12 py-4 border border-black rounded-md hover:bg-button2 hover:text-white">
             Return To Shop

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Product from "../../Product";
 import RatingComponent from "../../RatingComponent";
 
-function Explore({ products, wishList, setWishListItems }) {
+function Explore({ products, wishList }) {
   return (
     <div className="flex flex-col gap-10 text-start">
       <div className="flex gap-4 items-center xs:justify-center md:justify-start">
@@ -29,7 +29,6 @@ function Explore({ products, wishList, setWishListItems }) {
                   price={product.price}
                   discount={product.discountPercentage}
                   image={product.images[0]}
-                  setWishListItems={setWishListItems}
                   isWishList={wishList.some((item) => item.id === product.id)}
                   productData={product}
                 />
