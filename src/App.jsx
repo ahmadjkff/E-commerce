@@ -16,8 +16,13 @@ import Checkout from "./components/pages/CheckOut";
 import { ProductProvider } from "./Contexts/ProductContext";
 import { WishlistProvider } from "./Contexts/WishlistContext";
 import { CartProvider } from "./Contexts/CartContext";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
     <div className="font-poppins">
       <ProductProvider>
