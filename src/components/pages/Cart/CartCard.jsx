@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { ProductContext } from "../../../ProductContext";
+import { CartContext } from "../../../Contexts/CartContext";
 
 function CartCard({ product }) {
-  const { removeCartItem } = useContext(ProductContext);
+  const { removeCartItem } = useContext(CartContext);
 
   const handleQuantityChange = (e) => {
     console.log("handleQuantityChange", e.target.value);

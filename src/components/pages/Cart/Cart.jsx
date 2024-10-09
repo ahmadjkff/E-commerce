@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import CartCard from "./CartCard";
-import { ProductContext } from "../../../ProductContext";
+import { CartContext } from "../../../Contexts/CartContext";
 
 const Cart = () => {
-  const { cart } = useContext(ProductContext);
+  const { cart } = useContext(CartContext);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {

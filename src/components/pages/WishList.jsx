@@ -1,10 +1,13 @@
 import { useContext } from "react";
 import Product from "../Product";
-import { ProductContext } from "../../ProductContext";
+import { ProductContext } from "../../Contexts/ProductContext";
+import { WishlistContext } from "../../Contexts/WishlistContext";
+import { CartContext } from "../../Contexts/CartContext";
 
 function WishList() {
-  const { products, wishList, setWishList, setCartItems } =
-    useContext(ProductContext);
+  const { products } = useContext(ProductContext);
+  const { wishList, setWishList } = useContext(WishlistContext);
+  const { setCartItems } = useContext(CartContext);
 
   return (
     <div className="flex flex-col xs:px-10 sm:px-20 md:px-[135px]">

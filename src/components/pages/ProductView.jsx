@@ -6,7 +6,8 @@ import truck2 from "../../assets/truck2.png";
 import returnIcon from "../../assets/return.png";
 import Product from "../Product";
 import RatingComponent from "../common/RatingComponent";
-import { ProductContext } from "../../ProductContext";
+import { ProductContext } from "../../Contexts/ProductContext";
+import { WishlistContext } from "../../Contexts/WishlistContext";
 
 const SIZES = ["XS", "S", "M", "L", "XL"];
 
@@ -19,20 +20,19 @@ function ProductView() {
   const [loading, setLoading] = useState(true);
 
   const {
-    wishList,
-    setWishListItems,
     products,
     setProducts,
     fetchSingleProduct,
     setId,
     fetchProductsData,
   } = useContext(ProductContext);
+  const { wishList, setWishListItems } = useContext(WishlistContext);
 
   useEffect(() => {
     const fetchProductDetails = async () => {
       try {
         setLoading(true);
-        setId(id); // Store the ID in context
+        setId(id);
         const singleData = await fetchSingleProduct(id);
         setProduct(singleData);
 
@@ -230,19 +230,19 @@ function ProductView() {
         </div>
 
         <div className="flex flex-wrap gap-[30px] justify-center">
-          {products?.slice(0, 4).map((relatedProduct) => (
-            <div key={relatedProduct.id}>
+          {products?.slice(0, 4).map((product) => (
+            <div key={product.id}>
               <Product
-                id={relatedProduct.id}
-                name={relatedProduct.title}
-                price={relatedProduct.price}
-                discount={relatedProduct.discountPercentage}
-                image={relatedProduct.images[0]}
-                rating={product?.rating}
-                reviews={product?.reviews?.length}
+                id={product.id}
+                name={product.title}
+                price={product.price}
+                discount={product.discountPercentage}
+                image={product.images[0]}
+                rating={product.rating}
+                reviews={product.reviews.length}
                 setWishListItems={setWishListItems}
-                isWishList={wishList.includes(relatedProduct.id)}
-                key={relatedProduct.id}
+                isWishList={wishList.some((item) => item.id === product.id)}
+                productData={product}
               />
             </div>
           ))}

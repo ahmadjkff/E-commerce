@@ -7,7 +7,7 @@ import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import Stack from "@mui/material/Stack";
-import person from "../assets/person.png";
+import person from "../../assets/person.png";
 
 export default function Menu() {
   const [open, setOpen] = React.useState(false);

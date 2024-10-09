@@ -8,16 +8,13 @@ import New from "./Home/New";
 import Services from "./Home/Services";
 import ad2 from "../../assets/Home/ad2.png";
 import uparrow from "../../assets/Home/uparrow.png";
-import { ProductContext } from "../../ProductContext";
+import { ProductContext } from "../../Contexts/ProductContext";
+import { WishlistContext } from "../../Contexts/WishlistContext";
 
 function Home() {
-  const {
-    fetchProductsData,
-    setProducts,
-    products,
-    wishList,
-    setWishListItems,
-  } = useContext(ProductContext);
+  const { fetchProductsData, setProducts, products } =
+    useContext(ProductContext);
+  const { wishList, setWishListItems } = useContext(WishlistContext);
 
   useEffect(() => {
     const fetchProducts = async () => {

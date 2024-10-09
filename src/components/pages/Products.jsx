@@ -1,9 +1,11 @@
 import { useEffect, useContext } from "react";
 import Product from "../Product";
-import { ProductContext } from "../../ProductContext";
+import { ProductContext } from "../../Contexts/ProductContext";
+import { WishlistContext } from "../../Contexts/WishlistContext";
 
 function Products() {
-  const { products, wishList, setLimit, limit } = useContext(ProductContext);
+  const { products, setLimit, limit } = useContext(ProductContext);
+  const { wishList } = useContext(WishlistContext);
 
   useEffect(() => {
     setLimit(10);

@@ -5,7 +5,8 @@ import cart from "../assets/cart.png";
 import Menu from "./common/Menu";
 import LongMenu from "./common/LongMenu";
 import { useContext } from "react";
-import { ProductContext } from "../ProductContext";
+import { WishlistContext } from "../Contexts/WishlistContext";
+import { CartContext } from "../Contexts/CartContext";
 
 const options = [
   { name: "Home", to: "/" },
@@ -15,8 +16,8 @@ const options = [
 ];
 
 function Header() {
-  const wishListLength = useContext(ProductContext).wishList.length;
-  const cartLength = useContext(ProductContext).cart?.length;
+  const wishListLength = useContext(WishlistContext).wishList.length;
+  const cartLength = useContext(CartContext).cart.length;
   return (
     <header className="flex justify-between my-10 border-b-2 w-full xs:px-10 sm:px-16 md:px-20 pb-4">
       <div className=" xs:hidden sm:hidden md:block lg:block xl:block">

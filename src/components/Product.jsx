@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 import fav from "../assets/Product/favoraite.png";
 import view from "../assets/view.png";
 import { useContext, useMemo, useState } from "react";
-import { ProductContext } from "../ProductContext";
 import RatingComponent from "./common/RatingComponent";
+import { WishlistContext } from "../Contexts/WishlistContext";
+import { CartContext } from "../Contexts/CartContext";
 
 function Product({
   id,
@@ -20,8 +21,8 @@ function Product({
     return (price - (price * Math.floor(discount)) / 100).toFixed(2);
   }, [price, discount]);
   const [isHovered, setIsHovered] = useState(false);
-  const { setWishListItems, setCartItems } = useContext(ProductContext);
-
+  const { setWishListItems } = useContext(WishlistContext);
+  const { setCartItems } = useContext(CartContext);
   return (
     <div
       className="flex flex-col flex-wrap gap-4 w-[270px] text-start justify-center"

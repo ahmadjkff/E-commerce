@@ -13,29 +13,35 @@ import Products from "./components/pages/Products";
 import ProductView from "./components/pages/ProductView";
 import Cart from "./components/pages/Cart/Cart";
 import Checkout from "./components/pages/CheckOut";
-import { ProductProvider } from "./ProductContext";
+import { ProductProvider } from "./Contexts/ProductContext";
+import { WishlistProvider } from "./Contexts/WishlistContext";
+import { CartProvider } from "./Contexts/CartContext";
 
 function App() {
   return (
     <div className="font-poppins">
       <ProductProvider>
-        <Router>
-          <Header />
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/login" element={<LogIn />} />
-            <Route path="/wishlist" element={<WishList />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/products/:id" element={<ProductView />} />
-            <Route path="*" element={<Error />} />
-          </Routes>
-          <Footer />
-        </Router>
+        <WishlistProvider>
+          <CartProvider>
+            <Router>
+              <Header />
+              <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/login" element={<LogIn />} />
+                <Route path="/wishlist" element={<WishList />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/products/:id" element={<ProductView />} />
+                <Route path="*" element={<Error />} />
+              </Routes>
+              <Footer />
+            </Router>
+          </CartProvider>
+        </WishlistProvider>
       </ProductProvider>
     </div>
   );
