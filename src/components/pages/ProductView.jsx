@@ -50,8 +50,6 @@ function ProductView() {
       }
     };
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
-
     fetchProductDetails();
   }, [id]);
 
@@ -77,7 +75,9 @@ function ProductView() {
             <img
               key={index}
               className="min-w-[170px] min-h-[138px] max-w-[170px] max-h-[138px] bg-secondary"
-              src={product?.images[0] || "https://via.placeholder.com/170x138"}
+              src={
+                product?.images?.[0] || "https://via.placeholder.com/170x138"
+              }
               alt={product?.title}
               width={170}
               height={138}
@@ -86,7 +86,7 @@ function ProductView() {
         </div>
         <div className="min-w-[500px] min-h-[600px] max-w-[500px] max-h-[600px] bg-secondary overflow-hidden px-10">
           <img
-            src={product?.images[0] || "https://via.placeholder.com/500x600"}
+            src={product?.images?.[0] || "https://via.placeholder.com/500x600"}
             alt={product?.title}
             width={400}
             height={500}

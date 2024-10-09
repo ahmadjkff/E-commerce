@@ -18,23 +18,22 @@ function Explore({ products, wishList }) {
       </div>
 
       <div className="flex flex-wrap gap-[30px] justify-center">
-        {products?.map((product, index) => {
-          if (index < 8)
-            return (
-              <div key={index}>
-                <Product
-                  id={product.id}
-                  name={product.title}
-                  price={product.price}
-                  discount={product.discountPercentage}
-                  image={product.images[0]}
-                  rating={product?.rating}
-                  reviews={product?.reviews?.length}
-                  isWishList={wishList.some((item) => item.id === product.id)}
-                  productData={product}
-                />
-              </div>
-            );
+        {products?.slice(0, 8).map((product, index) => {
+          return (
+            <div key={index}>
+              <Product
+                id={product.id}
+                name={product.title}
+                price={product.price}
+                discount={product.discountPercentage}
+                image={product.images[0]}
+                rating={product?.rating}
+                reviews={product?.reviews?.length}
+                isWishList={wishList.some((item) => item.id === product.id)}
+                productData={product}
+              />
+            </div>
+          );
         })}
       </div>
 

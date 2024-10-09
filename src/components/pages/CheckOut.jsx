@@ -56,10 +56,7 @@ function Checkout() {
         </div>
         <div className="flex flex-col gap-8">
           {cart.map((product, index) => (
-            <div
-              className="flex justify-between w-[500px] items-center"
-              key={index}
-            >
+            <div className="flex justify-between items-center" key={index}>
               <div className="flex gap-6 items-center">
                 <img src={product.images[0]} alt="" width={70} />
                 <p>{product.title}</p>

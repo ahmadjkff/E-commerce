@@ -5,7 +5,7 @@ export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
-  const [limit, setLimit] = useState(8);
+  const [limit, setLimit] = useState(0);
   const [category, setCategory] = useState("");
   const [product, setProduct] = useState(null);
   const [id, setId] = useState(null);

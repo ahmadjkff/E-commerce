@@ -15,7 +15,7 @@ function FlashSales({ products, wishList }) {
       </div>
 
       <div className="flex flex-wrap gap-[30px] justify-center">
-        {products?.map((product, index) => {
+        {products?.slice(0, 4)?.map((product, index) => {
           if (index < 4)
             return (
               <div key={index}>

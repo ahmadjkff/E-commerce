@@ -17,7 +17,7 @@ function BestSelling({ products, wishList }) {
         </Link>
       </div>
       <div className="flex flex-wrap gap-[30px] justify-center">
-        {products?.map((product, index) => {
+        {products?.slice(0, 4)?.map((product, index) => {
           if (index < 4)
             return (
               <div key={index}>
