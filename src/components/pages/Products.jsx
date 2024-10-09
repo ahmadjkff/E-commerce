@@ -22,6 +22,8 @@ function Products() {
             price={product?.price}
             discount={product?.discountPercentage}
             image={product?.images?.[0] || ""}
+            rating={product?.rating}
+            reviews={product?.reviews?.length}
             isWishList={wishList.some((item) => item?.id === product?.id)}
             productData={product}
             key={product?.id}

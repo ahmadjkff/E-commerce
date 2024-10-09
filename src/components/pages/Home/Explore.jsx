@@ -29,13 +29,11 @@ function Explore({ products, wishList }) {
                   price={product.price}
                   discount={product.discountPercentage}
                   image={product.images[0]}
+                  rating={product?.rating}
+                  reviews={product?.reviews?.length}
                   isWishList={wishList.some((item) => item.id === product.id)}
                   productData={product}
                 />
-                <div className="flex text-sm gap-2 items-center mt-2 ">
-                  <RatingComponent rating={product.rating} />
-                  <p>({product.reviews.length})</p>
-                </div>
               </div>
             );
         })}

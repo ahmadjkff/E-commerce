@@ -3,6 +3,7 @@ import fav from "../assets/Product/favoraite.png";
 import view from "../assets/view.png";
 import { useContext, useMemo, useState } from "react";
 import { ProductContext } from "../ProductContext";
+import RatingComponent from "./RatingComponent";
 
 function Product({
   id,
@@ -10,6 +11,8 @@ function Product({
   price,
   discount,
   image,
+  rating,
+  reviews,
   isWishList,
   productData,
 }) {
@@ -58,7 +61,7 @@ function Product({
           <img src={view} alt="View icon" width={19} height={14} />
         </Link>
         <button
-          className={`absolute bottom-0 right-0 w-full h-8 bg-black text-white hover:text-yellow-200 ${
+          className={`absolute bottom-0 right-0 w-full h-8 bg-black text-white hover:text-button2 ${
             isHovered ? "opacity-100" : "opacity-0"
           } transition duration-300`}
           onClick={() => setCartItems(productData)}
@@ -78,6 +81,10 @@ function Product({
             <p className="text-button2">${price}</p>
           )}
         </div>
+      </div>
+      <div className="flex text-sm gap-2 items-center">
+        <RatingComponent rating={rating} />
+        <p>({reviews})</p>
       </div>
     </div>
   );

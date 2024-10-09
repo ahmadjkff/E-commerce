@@ -238,15 +238,12 @@ function ProductView() {
                 price={relatedProduct.price}
                 discount={relatedProduct.discountPercentage}
                 image={relatedProduct.images[0]}
+                rating={product?.rating}
+                reviews={product?.reviews?.length}
                 setWishListItems={setWishListItems}
                 isWishList={wishList.includes(relatedProduct.id)}
+                key={relatedProduct.id}
               />
-              <div className="flex text-sm gap-2 items-center mt-2">
-                <RatingComponent rating={relatedProduct.rating} />
-                <p className="text-gray-400">
-                  ({relatedProduct.reviews?.length})
-                </p>
-              </div>
             </div>
           ))}
         </div>
