@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import Product from "../../Product";
-import RatingComponent from "../../RatingComponent";
 
 function Explore({ products, wishList }) {
   return (

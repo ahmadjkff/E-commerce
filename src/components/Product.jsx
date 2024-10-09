@@ -3,7 +3,7 @@ import fav from "../assets/Product/favoraite.png";
 import view from "../assets/view.png";
 import { useContext, useMemo, useState } from "react";
 import { ProductContext } from "../ProductContext";
-import RatingComponent from "./RatingComponent";
+import RatingComponent from "./common/RatingComponent";
 
 function Product({
   id,

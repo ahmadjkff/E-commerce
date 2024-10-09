@@ -2,8 +2,8 @@ import { Link, NavLink } from "react-router-dom";
 import searchIcon from "../assets/search.png";
 import favorait from "../assets/fav.png";
 import cart from "../assets/cart.png";
-import Menu from "./Menu";
-import LongMenu from "./LongMenu";
+import Menu from "./common/Menu";
+import LongMenu from "./common/LongMenu";
 import { useContext } from "react";
 import { ProductContext } from "../ProductContext";
 

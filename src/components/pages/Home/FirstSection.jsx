@@ -1,4 +1,4 @@
-import LongMenu from "../../LongMenu";
+import LongMenu from "../../common/LongMenu";
 import rightarrow from "../../../assets/rightarrow.png";
 import { Link } from "react-router-dom";
 import ad from "../../../assets/Home/ad.png";
