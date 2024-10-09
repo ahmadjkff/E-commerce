@@ -2,10 +2,16 @@ import { useContext } from "react";
 import { CartContext } from "../../../Contexts/CartContext";
 
 function CartCard({ product }) {
-  const { removeCartItem } = useContext(CartContext);
+  const { removeCartItem, setCart } = useContext(CartContext);
 
   const handleQuantityChange = (e) => {
-    console.log("handleQuantityChange", e.target.value);
+    const newQuantity = parseInt(e.target.value, 10);
+
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === product.id ? { ...item, quantity: newQuantity } : item
+      )
+    );
   };
 
   return (
@@ -32,7 +38,7 @@ function CartCard({ product }) {
         <span className="xs:block lg:hidden">Quantity:</span>
         <input
           type="number"
-          value={1}
+          value={product.quantity}
           onChange={(e) => handleQuantityChange(e)}
           className="w-16 px-2 py-1 border rounded text-center"
           min="1"
@@ -40,7 +46,7 @@ function CartCard({ product }) {
       </div>
       <div className="flex justify-between gap-4">
         <span className="xs:block lg:hidden">Total:</span>
-        <span className="text-center">${product.price * 1}</span>
+        <span className="text-center">${product.price * product.quantity}</span>
       </div>
     </div>
   );

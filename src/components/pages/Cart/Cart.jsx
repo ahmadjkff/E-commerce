@@ -4,12 +4,14 @@ import CartCard from "./CartCard";
 import { CartContext } from "../../../Contexts/CartContext";
 
 const Cart = () => {
-  const { cart } = useContext(CartContext);
-  const [total, setTotal] = useState(0);
+  const { cart, total, setTotal } = useContext(CartContext);
 
   useEffect(() => {
-    const newTotal = cart.reduce((acc, product) => acc + product.price * 1, 0);
-    setTotal(newTotal);
+    const newTotal = cart.reduce(
+      (acc, product) => acc + product.price * product.quantity,
+      0
+    );
+    setTotal(newTotal.toFixed(2));
   }, [cart]);
 
   return (

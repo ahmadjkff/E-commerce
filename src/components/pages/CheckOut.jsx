@@ -18,7 +18,7 @@ const DETAILS = [
 ];
 
 function Checkout() {
-  const { cart } = useContext(CartContext);
+  const { cart, total } = useContext(CartContext);
 
   return (
     <div className="xs:mx-20 md:mx-[135px] text-start mb-36">
@@ -64,14 +64,12 @@ function Checkout() {
                 <img src={product.images[0]} alt="" width={70} />
                 <p>{product.title}</p>
               </div>
-              <span>${product.price}</span>
+              <span>${product.price * product.quantity}</span>
             </div>
           ))}
           <div className="flex justify-between items-center">
             <span>Subtotal:</span>
-            <span>
-              ${cart.reduce((total, product) => total + product.price * 1, 0)}
-            </span>
+            <span>${total}</span>
           </div>
           <div className="w-full border-t border-black" />
           <div className="flex justify-between items-center">
@@ -81,9 +79,7 @@ function Checkout() {
           <div className="w-full border-t border-black" />
           <div className="flex justify-between items-center">
             <span>Total:</span>
-            <span>
-              ${cart.reduce((total, product) => total + product.price * 1, 0)}
-            </span>
+            <span>${total}</span>
           </div>
           <div className="flex items-center justify-between">
             <div className="flex gap-4">
