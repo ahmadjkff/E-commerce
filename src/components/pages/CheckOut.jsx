@@ -1,23 +1,8 @@
+import { useContext } from "react";
 import payment from "../../assets/payment.png";
+import { CartContext } from "../../Contexts/CartContext";
 
-const products = [
-  {
-    id: 0,
-    name: "LCD Monitor",
-    price: 650,
-    quantity: 1,
-    image: "https://via.placeholder.com/52x52",
-  },
-  {
-    id: 1,
-    name: "H1 Gamepad",
-    price: 550,
-    quantity: 2,
-    image: "https://via.placeholder.com/52x52",
-  },
-];
-
-const Details = [
+const DETAILS = [
   { name: "First Name", label: "name", required: true, type: "text" },
   { name: "Company Name", label: "company", required: false, type: "text" },
   { name: "Street Address", label: "address", required: true, type: "text" },
@@ -33,6 +18,8 @@ const Details = [
 ];
 
 function Checkout() {
+  const { cart } = useContext(CartContext);
+
   return (
     <div className="xs:mx-20 md:mx-[135px] text-start mb-36">
       <p className="mb-20">
@@ -46,7 +33,7 @@ function Checkout() {
 
       <div className="flex xs:flex-col xs:justify-center md:justify-between md:flex-row">
         <div className="xs:w-full md:w-[500px]">
-          {Details.map((detail, index) => (
+          {DETAILS.map((detail, index) => (
             <div key={index} className="flex flex-col">
               <label htmlFor={detail.label}>
                 {detail.name}
@@ -68,14 +55,14 @@ function Checkout() {
           </div>
         </div>
         <div className="flex flex-col gap-8">
-          {products.map((product, index) => (
+          {cart.map((product, index) => (
             <div
               className="flex justify-between w-[500px] items-center"
               key={index}
             >
               <div className="flex gap-6 items-center">
-                <img src={product.image} alt="" />
-                <p>{product.name}</p>
+                <img src={product.images[0]} alt="" width={70} />
+                <p>{product.title}</p>
               </div>
               <span>${product.price}</span>
             </div>
@@ -83,11 +70,7 @@ function Checkout() {
           <div className="flex justify-between items-center">
             <span>Subtotal:</span>
             <span>
-              $
-              {products.reduce(
-                (total, product) => total + product.price * product.quantity,
-                0
-              )}
+              ${cart.reduce((total, product) => total + product.price * 1, 0)}
             </span>
           </div>
           <div className="w-full border-t border-black" />
@@ -99,11 +82,7 @@ function Checkout() {
           <div className="flex justify-between items-center">
             <span>Total:</span>
             <span>
-              $
-              {products.reduce(
-                (total, product) => total + product.price * product.quantity,
-                0
-              )}
+              ${cart.reduce((total, product) => total + product.price * 1, 0)}
             </span>
           </div>
           <div className="flex items-center justify-between">
