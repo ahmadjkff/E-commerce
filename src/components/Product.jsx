@@ -6,7 +6,7 @@ import RatingComponent from "./common/RatingComponent";
 import { WishlistContext } from "../Contexts/WishlistContext";
 import { CartContext } from "../Contexts/CartContext";
 
-function Product({ isWishList, product }) {
+function Product({ rating, isWishList, product }) {
   const priceAfterDiscount = useMemo(() => {
     return (
       product.price -
@@ -27,7 +27,7 @@ function Product({ isWishList, product }) {
       <div className="relative bg-secondary rounded-md px-10 py-4 min-h-[222px] max-h-[222px]">
         <img
           className="max-h-[200px]"
-          src={product.images[0] || "https://via.placeholder.com/150"}
+          src={product.images?.[0] || "https://via.placeholder.com/150"}
           alt={product.title}
           width={190}
           loading="lazy"
@@ -81,7 +81,10 @@ function Product({ isWishList, product }) {
         </div>
       </div>
       <div className="flex text-sm gap-2 items-center">
-        <RatingComponent rating={product.rating} />
+        <RatingComponent
+          product={product}
+          rating={rating ? rating : product.rating}
+        />
         <p>({product?.reviews?.length})</p>
       </div>
     </div>

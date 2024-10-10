@@ -94,7 +94,9 @@ export default function Menu() {
                     </MenuItem>
                     <MenuItem onClick={handleClose}>My Order</MenuItem>
                     <MenuItem onClick={handleClose}>My Cancilations</MenuItem>
-                    <MenuItem onClick={handleClose}>My Reviews</MenuItem>
+                    <MenuItem onClick={handleClose}>
+                      <Link to="/reviews">My Reviews</Link>
+                    </MenuItem>
                     <MenuItem onClick={handleClose}>Logout</MenuItem>
                   </MenuList>
                 </ClickAwayListener>

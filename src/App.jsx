@@ -19,6 +19,7 @@ import { CartProvider } from "./Contexts/CartContext";
 import { useEffect } from "react";
 import Search from "./components/pages/Search";
 import Account from "./components/pages/Account";
+import Reviews from "./components/pages/Reviews";
 
 function App() {
   useEffect(() => {
@@ -44,6 +45,7 @@ function App() {
                 <Route path="/account" element={<Account />} />
                 <Route path="/products" element={<Products />} />
                 <Route path="/products/:id" element={<ProductView />} />
+                <Route path="/reviews" element={<Reviews />} />
                 <Route path="/search" element={<Search />} />
                 <Route path="*" element={<Error />} />
               </Routes>

@@ -9,6 +9,8 @@ export const ProductProvider = ({ children }) => {
   const [category, setCategory] = useState("");
   const [product, setProduct] = useState(null);
   const [id, setId] = useState(null);
+  const [ratingProducts, setRatingProducts] = useState([]);
+  const [rating, setRating] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -29,6 +31,12 @@ export const ProductProvider = ({ children }) => {
     }
   }, [id]);
 
+  const setRatingProductsItems = (product) => {
+    setRatingProducts((prevRatingProducts) => {
+      return [...prevRatingProducts, product];
+    });
+  };
+
   return (
     <ProductContext.Provider
       value={{
@@ -42,6 +50,11 @@ export const ProductProvider = ({ children }) => {
         product,
         setId,
         setProduct,
+        ratingProducts,
+        setRatingProducts,
+        setRatingProductsItems,
+        setRating,
+        rating,
       }}
     >
       {children}
