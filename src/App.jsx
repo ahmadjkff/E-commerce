@@ -17,6 +17,7 @@ import { ProductProvider } from "./Contexts/ProductContext";
 import { WishlistProvider } from "./Contexts/WishlistContext";
 import { CartProvider } from "./Contexts/CartContext";
 import { useEffect } from "react";
+import Search from "./components/pages/Search";
 
 function App() {
   useEffect(() => {
@@ -41,6 +42,7 @@ function App() {
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/products" element={<Products />} />
                 <Route path="/products/:id" element={<ProductView />} />
+                <Route path="/search" element={<Search />} />
                 <Route path="*" element={<Error />} />
               </Routes>
               <Footer />

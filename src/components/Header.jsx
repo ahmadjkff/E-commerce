@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import searchIcon from "../assets/search.png";
 import favorait from "../assets/fav.png";
 import cart from "../assets/cart.png";
@@ -7,6 +7,7 @@ import LongMenu from "./common/LongMenu";
 import { useContext } from "react";
 import { WishlistContext } from "../Contexts/WishlistContext";
 import { CartContext } from "../Contexts/CartContext";
+import { fetchSearch } from "../API";
 
 const options = [
   { name: "Home", to: "/" },
@@ -18,6 +19,13 @@ const options = [
 function Header() {
   const wishListLength = useContext(WishlistContext).wishList.length;
   const cartLength = useContext(CartContext).cart.length;
+  const navigate = useNavigate();
+
+  const handleSearchChange = async (e) => {
+    const query = e.target.value;
+    navigate(`/search?q=${encodeURIComponent(query)}`);
+  };
+
   return (
     <header className="flex justify-between my-10 border-b-2 w-full xs:px-10 sm:px-16 md:px-20 pb-4">
       <div className=" xs:hidden sm:hidden md:block lg:block xl:block">
@@ -71,6 +79,7 @@ function Header() {
             type="text"
             placeholder="What are you looking for?"
             width={243}
+            onChange={handleSearchChange}
           />
           <img
             className="absolute -translate-y-1/2 xs:right-1 sm:right-1 md:right-3 xs:top-[38%] sm:top-[40%] md:top-1/2 xs:w-3"
