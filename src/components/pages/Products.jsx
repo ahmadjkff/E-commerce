@@ -19,15 +19,8 @@ function Products() {
       <div className="flex  gap-8 flex-wrap">
         {products.map((product) => (
           <Product
-            id={product?.id}
-            name={product?.title}
-            price={product?.price}
-            discount={product?.discountPercentage}
-            image={product?.images?.[0] || ""}
-            rating={product?.rating}
-            reviews={product?.reviews?.length}
             isWishList={wishList.some((item) => item?.id === product?.id)}
-            productData={product}
+            product={product}
             key={product?.id}
           />
         ))}
