@@ -8,6 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import Stack from "@mui/material/Stack";
 import person from "../../assets/person.png";
+import { Link } from "react-router-dom";
 
 export default function Menu() {
   const [open, setOpen] = React.useState(false);
@@ -88,7 +89,9 @@ export default function Menu() {
                     onKeyDown={handleListKeyDown}
                     className="text-white backdrop-blur-sm"
                   >
-                    <MenuItem onClick={handleClose}>Manage My Account</MenuItem>
+                    <MenuItem onClick={handleClose}>
+                      <Link to="/account">Manage My Account</Link>
+                    </MenuItem>
                     <MenuItem onClick={handleClose}>My Order</MenuItem>
                     <MenuItem onClick={handleClose}>My Cancilations</MenuItem>
                     <MenuItem onClick={handleClose}>My Reviews</MenuItem>

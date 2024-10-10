@@ -18,6 +18,7 @@ import { WishlistProvider } from "./Contexts/WishlistContext";
 import { CartProvider } from "./Contexts/CartContext";
 import { useEffect } from "react";
 import Search from "./components/pages/Search";
+import Account from "./components/pages/Account";
 
 function App() {
   useEffect(() => {
@@ -40,6 +41,7 @@ function App() {
                 <Route path="/wishlist" element={<WishList />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/checkout" element={<Checkout />} />
+                <Route path="/account" element={<Account />} />
                 <Route path="/products" element={<Products />} />
                 <Route path="/products/:id" element={<ProductView />} />
                 <Route path="/search" element={<Search />} />
