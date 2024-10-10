@@ -51,6 +51,8 @@ function ProductView() {
     };
 
     fetchProductDetails();
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [id]);
 
   const handleColorSelect = (color) => {
