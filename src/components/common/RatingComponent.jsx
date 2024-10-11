@@ -3,19 +3,20 @@ import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import { ProductContext } from "../../Contexts/ProductContext";
 
-export default function RatingComponent({ product, rating }) {
+export default function RatingComponent({ product, rating, isreadonly }) {
   const [value, setValue] = React.useState(rating);
-  const { setRatingProductsItems, setRating } =
-    React.useContext(ProductContext);
+  const { setRatingProductsItems } = React.useContext(ProductContext);
+
+  console.log(isreadonly);
 
   return (
     <Box sx={{ "& > legend": { mt: 2 } }}>
       <Rating
-        name="simple-controlled"
+        readOnly={isreadonly}
+        name="rating"
         value={value}
         onChange={(event, newValue) => {
-          setRating(newValue);
-          setRatingProductsItems(product);
+          setRatingProductsItems(product, newValue);
         }}
       />
     </Box>

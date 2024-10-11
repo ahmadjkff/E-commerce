@@ -6,7 +6,7 @@ import RatingComponent from "./common/RatingComponent";
 import { WishlistContext } from "../Contexts/WishlistContext";
 import { CartContext } from "../Contexts/CartContext";
 
-function Product({ rating, isWishList, product }) {
+function Product({ rating, ratingReadonly, isWishList, product }) {
   const priceAfterDiscount = useMemo(() => {
     return (
       product.price -
@@ -84,6 +84,7 @@ function Product({ rating, isWishList, product }) {
         <RatingComponent
           product={product}
           rating={rating ? rating : product.rating}
+          isreadonly={ratingReadonly}
         />
         <p>({product?.reviews?.length})</p>
       </div>

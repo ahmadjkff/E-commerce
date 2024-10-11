@@ -9,8 +9,9 @@ export const ProductProvider = ({ children }) => {
   const [category, setCategory] = useState("");
   const [product, setProduct] = useState(null);
   const [id, setId] = useState(null);
-  const [ratingProducts, setRatingProducts] = useState([]);
-  const [rating, setRating] = useState(null);
+  const [ratingProducts, setRatingProducts] = useState(
+    JSON.parse(localStorage.getItem("ratingProducts")) || []
+  );
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -31,11 +32,15 @@ export const ProductProvider = ({ children }) => {
     }
   }, [id]);
 
-  const setRatingProductsItems = (product) => {
+  const setRatingProductsItems = (product, newValue) => {
     setRatingProducts((prevRatingProducts) => {
-      return [...prevRatingProducts, product];
+      return [...prevRatingProducts, { product, userRating: newValue }];
     });
   };
+
+  useEffect(() => {
+    localStorage.setItem("ratingProducts", JSON.stringify(ratingProducts));
+  }, [ratingProducts]);
 
   return (
     <ProductContext.Provider
@@ -53,8 +58,6 @@ export const ProductProvider = ({ children }) => {
         ratingProducts,
         setRatingProducts,
         setRatingProductsItems,
-        setRating,
-        rating,
       }}
     >
       {children}
