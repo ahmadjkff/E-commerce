@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import CartCard from "./CartCard";
 import { CartContext } from "../../../Contexts/CartContext";
@@ -7,12 +7,13 @@ const Cart = () => {
   const { cart, total, setTotal } = useContext(CartContext);
 
   useEffect(() => {
-    const newTotal = cart.reduce(
-      (acc, product) => acc + product.price * product.quantity,
-      0
-    );
+    const newTotal = cart.reduce((acc, product) => {
+      const discountPrice =
+        product.price - (product.price * product.discountPercentage) / 100;
+      return acc + discountPrice * product.quantity;
+    }, 0);
     setTotal(newTotal.toFixed(2));
-  }, [cart]);
+  }, [cart, setTotal]);
 
   return (
     <div className="w-full flex justify-center">
@@ -27,11 +28,10 @@ const Cart = () => {
             <span className="text-center">Quantity</span>
             <span className="text-center">Subtotal</span>
           </div>
-          {cart?.map((product, index) => (
+          {cart.map((product, index) => (
             <CartCard product={product} key={index} />
           ))}
         </div>
-        <div className="flex justify-between mb-20 gap-4"></div>
         <div className="flex justify-between mb-20 gap-4 xs2:flex-col lg:flex-row">
           <button className="px-12 py-4 border border-black rounded-md hover:bg-button2 hover:text-white">
             Return To Shop
@@ -56,7 +56,7 @@ const Cart = () => {
             <p className="text-xl text-start mb-2">Cart Total</p>
             <div className="flex justify-between">
               <p>Subtotal:</p>
-              <p>{total}</p>
+              <p>${total}</p>
             </div>
             <hr className="my-4 w-full border-t border-gray-300" />
             <div className="flex justify-between">
@@ -66,11 +66,13 @@ const Cart = () => {
             <hr className="my-4 w-full border-t border-gray-300" />
             <div className="flex justify-between">
               <p>Total:</p>
-              <p>{total}</p>
+              <p>${total}</p>
             </div>
             <Link
               to="/checkout"
-              className="bg-button2 px-12 py-4 self-center rounded-md text-white hover:bg-white hover:text-black border hover:border-black"
+              className={`bg-button2 px-12 py-4 self-center rounded-md text-white hover:bg-white hover:text-black border hover:border-black ${
+                cart.length === 0 && "pointer-events-none"
+              }`}
             >
               Process To Checkout
             </Link>
