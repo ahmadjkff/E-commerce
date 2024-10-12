@@ -9,6 +9,8 @@ import MenuList from "@mui/material/MenuList";
 import Stack from "@mui/material/Stack";
 import person from "../../assets/person.png";
 import { Link } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../../config/firebase";
 
 export default function Menu() {
   const [open, setOpen] = React.useState(false);
@@ -19,6 +21,15 @@ export default function Menu() {
   };
 
   const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const handleLogOut = () => {
+    signOut(auth);
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
@@ -97,7 +108,7 @@ export default function Menu() {
                     <MenuItem onClick={handleClose}>
                       <Link to="/reviews">My Reviews</Link>
                     </MenuItem>
-                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                    <MenuItem onClick={handleLogOut}>Logout</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

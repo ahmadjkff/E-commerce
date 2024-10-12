@@ -3,8 +3,19 @@ import glogo from "../../assets/glogo.png";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
+import { auth } from "../../config/firebase";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { useContext } from "react";
+import { AuthContext } from "../../Contexts/auth";
 
 function SignUp() {
+  const { user } = useContext(AuthContext);
+
+  const handleSignIn = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider);
+    console.log(user);
+  };
   return (
     <div className="flex pr-10 mb-36 xs2:flex-col xs2:gap-4 xs2:justify-center xs2:items-center xs2:mx-10 md:justify-center md:flex-row md:gap-32">
       <img
@@ -41,7 +52,10 @@ function SignUp() {
           Create Account
         </button>
         <div className="relative w-full">
-          <button className="border w-full p-4 rounded-md border-black hover:bg-button2 hover:text-white">
+          <button
+            className="border w-full p-4 rounded-md border-black hover:bg-button2 hover:text-white"
+            onClick={handleSignIn}
+          >
             <img
               className="absolute w-4 h-4 xs2:left-5 md:left-20 top-1/2 transform -translate-y-1/2"
               src={glogo}
