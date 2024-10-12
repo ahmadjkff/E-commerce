@@ -150,7 +150,6 @@ function ProductView() {
             </div>
           </div>
 
-          {/* Quantity and Action Buttons */}
           <div className="flex gap-4 items-center mb-10">
             <div className="flex items-center border rounded-md">
               <button
@@ -188,7 +187,6 @@ function ProductView() {
             </button>
           </div>
 
-          {/* Delivery Information */}
           <div className="flex flex-col">
             <div className="flex gap-2 w-[400px] items-center border p-4">
               <img
@@ -224,7 +222,6 @@ function ProductView() {
         </div>
       </div>
 
-      {/* Related Items */}
       <div className="flex flex-col gap-10 text-start xs2:items-center md:items-start">
         <div className="flex gap-4 items-center">
           <div className="bg-button2 w-5 h-10 rounded-md" />

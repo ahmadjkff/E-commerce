@@ -38,7 +38,7 @@ function FlashSales({ wishList }) {
         <h1 className="text-xl text-button2">Today's</h1>
       </div>
       <div className="flex justify-between w-full xs2:flex-col md:flex-row">
-        <div className="flex items-center xs2:flex-col xs2:gap-4 md:gap-[87px]">
+        <div className="flex items-center xs2:flex-col xs2:gap-4 md:gap-[87px] md:flex-row">
           <h1 className="text-4xl font-semibold">Flash Sales</h1>
           <CountdownTimer initialTime={340000} />
         </div>
