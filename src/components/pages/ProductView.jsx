@@ -231,7 +231,7 @@ function ProductView() {
           <h1 className="text-xl text-button2">Related Item</h1>
         </div>
 
-        <div className="flex flex-wrap gap-[30px] justify-center">
+        <div className="flex gap-[30px] justify-center">
           {products?.slice(0, 4).map((product) => (
             <div key={product.id}>
               <Product
