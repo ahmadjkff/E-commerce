@@ -7,7 +7,6 @@ import LongMenu from "./common/LongMenu";
 import { useContext } from "react";
 import { WishlistContext } from "../Contexts/WishlistContext";
 import { CartContext } from "../Contexts/CartContext";
-import { fetchSearch } from "../API";
 
 const options = [
   { name: "Home", to: "/" },
@@ -27,8 +26,8 @@ function Header() {
   };
 
   return (
-    <header className="flex justify-between my-10 border-b-2 w-full xs:px-10 sm:px-16 md:px-20 pb-4">
-      <div className=" xs:hidden sm:hidden md:block lg:block xl:block">
+    <header className="flex flex-col md:flex-row justify-between my-10 border-b-2 w-full px-4 md:px-20 pb-4">
+      <div className="hidden lg:block">
         <Link
           to="/"
           className="font-bold xs:text-[14px] sm:text-[20px] md:text-[24px] text-center"
@@ -37,7 +36,7 @@ function Header() {
         </Link>
       </div>
 
-      <div className="gap-8 xs:hidden sm:hidden md:hidden lg:flex xl:flex">
+      <div className="hidden md:flex gap-8">
         <NavLink
           to="/"
           className={({ isActive }) =>
@@ -75,14 +74,14 @@ function Header() {
       <div className="flex gap-6">
         <div className="relative">
           <input
-            className="bg-secondary py-2 px-5 w-[243px] rounded-md xs:w-[140px] sm:w-[190px] md:w-[243px] xs:text-[8px] sm:text-xs md:text-sm "
+            className="bg-secondary py-2 px-5 w-full md:w-[243px] rounded-md text-xs md:text-sm"
             type="text"
             placeholder="What are you looking for?"
             width={243}
             onChange={handleSearchChange}
           />
           <img
-            className="absolute -translate-y-1/2 xs:right-1 sm:right-1 md:right-3 xs:top-[38%] sm:top-[40%] md:top-1/2 xs:w-3"
+            className="absolute -translate-y-1/2 right-3 top-1/2 w-3"
             src={searchIcon}
             alt="search icon"
             width={16}

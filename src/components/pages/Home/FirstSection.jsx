@@ -17,54 +17,27 @@ const options = [
 
 function FirstSection() {
   return (
-    <div className="flex justify-between">
+    <div className="flex flex-col lg:flex-row justify-between">
       <LongMenu options={options} />
-      <ul className="flex flex-col text-start gap-4 xs:hidden sm:hidden md:hidden lg:flex xl:flex">
-        <li className="relative w-[200px]">
-          <Link to="/products">
-            Woman’s Fashion
-            <img
-              className="absolute right-0 top-[5px]"
-              src={rightarrow}
-              width={8}
-            />
-          </Link>
-        </li>
-        <li className="relative w-[200px]">
-          <Link to="/products">
-            Men’s Fashion
-            <img
-              className="absolute right-0 top-[5px]"
-              src={rightarrow}
-              width={8}
-            />
-          </Link>
-        </li>
-        <li>
-          <Link to="/products">Electronics</Link>
-        </li>
-        <li>
-          <Link to="/products">Home &Lifestyle</Link>
-        </li>
-        <li>
-          <Link to="/products">Medicine</Link>
-        </li>
-        <li>
-          <Link to="/products">Sports &Outdoor</Link>
-        </li>
-        <li>
-          <Link to="/products">Baby’s &Toys</Link>
-        </li>
-        <li>
-          <Link to="/products">Groceries &Pets</Link>
-        </li>
-        <li>
-          <Link to="/products">Health &Beauty</Link>
-        </li>
+      <ul className=" text-start gap-4 xs2:hidden xs:hidden sm:hidden md:hidden lg:flex lg:flex-col lg:gap-4">
+        {options.map((option, index) => (
+          <li key={index} className="relative w-[200px]">
+            <Link to={option.to}>
+              {option.name}
+              {index < 2 && (
+                <img
+                  className="absolute right-0 top-[5px]"
+                  src={rightarrow}
+                  width={8}
+                />
+              )}
+            </Link>
+          </li>
+        ))}
       </ul>
-      <div className="border-l-2 border-gray-300 mx-8 -mt-10" />
-      <div>
-        <img src={ad} alt="Placeholder" />
+      <div className="border-l-2 border-gray-300 mx-8 my-4 lg:my-0 lg:-mt-10" />
+      <div className="flex justify-center lg:block">
+        <img src={ad} alt="Placeholder" className="max-w-full h-auto" />
       </div>
     </div>
   );

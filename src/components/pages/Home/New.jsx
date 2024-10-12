@@ -11,11 +11,11 @@ function New() {
         <h1 className="text-xl text-button2">Featured</h1>
       </div>
       <h1 className="text-4xl font-semibold">New Arrival</h1>
-      <div className="flex gap-[30px] xs:flex-col md:flex-row">
+      <div className="flex gap-[30px] xs2:flex-col md:flex-row">
         <img src={newad1} alt="" width={570} height={600} />
         <div className="flex flex-col gap-[30px]">
           <img src={newad2} alt="" width={570} height={284} />
-          <div className="flex gap-[30px] xs:flex-col md:flex-row ">
+          <div className="flex gap-[30px] xs2:flex-col md:flex-row ">
             <img src={newad3} alt="" width={270} height={284} />
             <img src={newad4} alt="" width={270} height={284} />
           </div>

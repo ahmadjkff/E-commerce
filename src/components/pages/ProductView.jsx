@@ -235,16 +235,9 @@ function ProductView() {
           {products?.slice(0, 4).map((product) => (
             <div key={product.id}>
               <Product
-                id={product.id}
-                name={product.title}
-                price={product.price}
-                discount={product.discountPercentage}
-                image={product.images[0]}
-                rating={product.rating}
-                reviews={product.reviews.length}
                 setWishListItems={setWishListItems}
                 isWishList={wishList.some((item) => item.id === product.id)}
-                productData={product}
+                product={product}
               />
             </div>
           ))}

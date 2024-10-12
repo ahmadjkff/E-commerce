@@ -9,7 +9,7 @@ import twitter from "../assets/twitter.png";
 
 function Footer() {
   return (
-    <footer className="flex bg-black text-white text-start px-[135px] pt-20 pb-32 gap-24 xs:w-full xs:flex-col sm:flex-col sm:items-center sm:text-center md:flex-row md:text-start">
+    <footer className="flex bg-black text-white text-start px-[135px] pt-20 pb-32 gap-24 xs:w-full xs2:flex-col sm:flex-col sm:items-center sm:text-center md:flex-row md:text-start">
       <div className="flex flex-col gap-6">
         <h2 className="font-bold text-xl">Exclusive</h2>
         <h4>Subscribe</h4>

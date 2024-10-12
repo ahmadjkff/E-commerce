@@ -9,10 +9,10 @@ import { CartContext } from "../Contexts/CartContext";
 function Product({ rating, ratingReadonly, isWishList, product }) {
   const priceAfterDiscount = useMemo(() => {
     return (
-      product.price -
-      (product.price * Math.floor(product.discountPercentage)) / 100
+      product?.price -
+      (product?.price * Math.floor(product?.discountPercentage)) / 100
     ).toFixed(2);
-  }, [product.price, product.discountPercentage]);
+  }, [product?.price, product?.discountPercentage]);
 
   const [isHovered, setIsHovered] = useState(false);
   const { setWishListItems } = useContext(WishlistContext);
@@ -27,15 +27,15 @@ function Product({ rating, ratingReadonly, isWishList, product }) {
       <div className="relative bg-secondary rounded-md px-10 py-4 min-h-[222px] max-h-[222px]">
         <img
           className="max-h-[200px]"
-          src={product.images?.[0] || "https://via.placeholder.com/150"}
-          alt={product.title}
+          src={product?.images?.[0] || "https://via.placeholder.com/150"}
+          alt={product?.title}
           width={190}
           loading="lazy"
         />
-        {Math.floor(product.discountPercentage) > 0 && (
+        {Math.floor(product?.discountPercentage) > 0 && (
           <div className="absolute top-3 left-2 bg-button2 text-white px-3 py-1 rounded-md text-center">
             <span className="text-xs">
-              -{Math.floor(product.discountPercentage)}%
+              -{Math.floor(product?.discountPercentage)}%
             </span>
           </div>
         )}
@@ -53,7 +53,7 @@ function Product({ rating, ratingReadonly, isWishList, product }) {
           />
         </button>
         <Link
-          to={`/products/${product.id}`}
+          to={`/products/${product?.id}`}
           className="absolute top-[55px] right-2 rounded-full bg-white p-2 hover:bg-button2 transition duration-300"
         >
           <img src={view} alt="View icon" width={19} height={14} />
@@ -68,15 +68,15 @@ function Product({ rating, ratingReadonly, isWishList, product }) {
         </button>
       </div>
       <div>
-        <h2>{product.title}</h2>
+        <h2>{product?.title}</h2>
         <div>
-          {Math.floor(product.discountPercentage) > 0 ? (
+          {Math.floor(product?.discountPercentage) > 0 ? (
             <p>
               <span className="text-button2">${priceAfterDiscount}</span>
-              <span className="ml-3 line-through ">${product.price}</span>
+              <span className="ml-3 line-through ">${product?.price}</span>
             </p>
           ) : (
-            <p className="text-button2">${product.price}</p>
+            <p className="text-button2">${product?.price}</p>
           )}
         </div>
       </div>

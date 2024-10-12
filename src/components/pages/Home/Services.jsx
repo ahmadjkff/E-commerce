@@ -4,7 +4,7 @@ import guarantee from "../../../assets/Home/guarantee.png";
 
 function Services() {
   return (
-    <div className="flex justify-around xs:flex-col xs:gap-8 md:flex-row">
+    <div className="flex justify-around xs2:flex-col xs:gap-8 md:flex-row">
       <div className="flex flex-col items-center">
         <div className="bg-customblack rounded-full p-2">
           <div className="bg-black p-2 rounded-full">

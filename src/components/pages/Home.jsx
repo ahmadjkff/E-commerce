@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import FirstSection from "./Home/FirstSection";
 import FlashSales from "./Home/FlashSales";
 import BrowseByCategory from "./Home/BrowseByCategory";
@@ -8,47 +8,23 @@ import New from "./Home/New";
 import Services from "./Home/Services";
 import ad2 from "../../assets/Home/ad2.png";
 import uparrow from "../../assets/Home/uparrow.png";
-import { ProductContext } from "../../Contexts/ProductContext";
 import { WishlistContext } from "../../Contexts/WishlistContext";
 
 function Home() {
-  const { fetchProductsData, setProducts, products } =
-    useContext(ProductContext);
   const { wishList, setWishListItems } = useContext(WishlistContext);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const data = await fetchProductsData("", 8); // Fetch first 8 products
-      setProducts(data);
-    };
-
-    fetchProducts();
-  }, [fetchProductsData, setProducts]);
 
   const moveTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <div className="flex flex-col gap-[140px] mb-[140px] xs:mx-20 md:mx-[135px] relative">
+    <div className="flex flex-col gap-[140px] mb-[140px] xs2:mx-14 md:mx-[135px] relative">
       <FirstSection />
-      <FlashSales
-        products={products}
-        wishList={wishList}
-        setWishListItems={setWishListItems}
-      />
+      <FlashSales wishList={wishList} setWishListItems={setWishListItems} />
       <BrowseByCategory />
-      <BestSelling
-        products={products}
-        wishList={wishList}
-        setWishListItems={setWishListItems}
-      />
+      <BestSelling wishList={wishList} setWishListItems={setWishListItems} />
       <img src={ad2} alt="Advertisement" />
-      <Explore
-        products={products}
-        wishList={wishList}
-        setWishListItems={setWishListItems}
-      />
+      <Explore wishList={wishList} setWishListItems={setWishListItems} />
       <New />
       <Services />
       <button
