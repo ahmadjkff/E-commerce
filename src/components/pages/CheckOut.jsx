@@ -21,7 +21,7 @@ function Checkout() {
   const { cart, total } = useContext(CartContext);
 
   return (
-    <div className="xs:mx-20 md:mx-[135px] text-start mb-36">
+    <div className="xs2:mx-20 md:mx-[135px] text-start mb-36">
       <p className="mb-20">
         <span className="text-gray-400">
           Account / My Account / Product / View Cart /
@@ -31,8 +31,8 @@ function Checkout() {
 
       <h2 className="text-4xl mb-12">Billing Details</h2>
 
-      <div className="flex xs:flex-col xs:justify-center md:justify-between md:flex-row">
-        <div className="xs:w-full md:w-[500px]">
+      <div className="flex xs2:flex-col xs2:justify-center md:justify-between md:flex-row">
+        <div className="xs2:w-full md:w-[500px]">
           {DETAILS.map((detail, index) => (
             <div key={index} className="flex flex-col">
               <label htmlFor={detail.label}>
@@ -99,7 +99,7 @@ function Checkout() {
             />
             <label htmlFor="cash">Cash On Delivery</label>
           </div>
-          <div className="flex gap-4  xs:flex-col md:flex-row">
+          <div className="flex gap-4  xs2:flex-col md:flex-row">
             <input
               className="py-4 px-6 bg-secondary rounded-md border border-black"
               type="text"

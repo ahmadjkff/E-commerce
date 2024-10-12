@@ -9,7 +9,7 @@ function Contact() {
         <span className="text-gray-400 ml-20">Home /</span> Contact
       </p>
 
-      <div className="flex justify-start mx-20 xs:flex-col  md:flex-col lg:flex-row xs:gap-2 md:gap-8 xs:items-center xs:justify-center">
+      <div className="flex justify-start mx-20 xs2:flex-col md:flex-col lg:flex-row xs2:gap-2 md:gap-8 xs2:items-center xs2:justify-center">
         <div className="container1 flex flex-col w-[340px] p-9 shadow-md my-20">
           <div className="flex gap-4">
             <img className="w-10 rounded-full" src={phone} alt="" />
@@ -35,9 +35,9 @@ function Contact() {
           </div>
         </div>
 
-        <div className="shadow-md my-20">
+        <div className="shadow-md my-20 xs2:min-w-[320px] md:w-full">
           <div className="flex flex-col gap-[22px] mt-10 p-8">
-            <div className="flex gap-4 justify-center px-8 xs:flex-col md:flex-row">
+            <div className="flex gap-4 justify-center xs2:px-0 md:px-8 xs2:flex-col md:flex-row">
               <TextField
                 required
                 id="standard-basic"
@@ -60,7 +60,7 @@ function Contact() {
                 fullWidth
               />
             </div>
-            <div className="px-8">
+            <div className="xs2:px-0 md:px-8">
               <TextField
                 id="filled-textarea"
                 label="Your Massage"
@@ -72,7 +72,7 @@ function Contact() {
               />
             </div>
 
-            <div className="flex mt-12 xs:justify-center md:justify-end">
+            <div className="flex mt-12 xs2:justify-center md:justify-end">
               <button className="bg-button2 text-white px-12 py-4 rounded-md border border-black hover:bg-white hover:text-button2">
                 Send Massage
               </button>

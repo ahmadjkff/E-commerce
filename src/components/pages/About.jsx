@@ -18,9 +18,9 @@ function About() {
       <p className="text-start ml-20">
         <span className="text-gray-400">Home /</span> About
       </p>
-      <div className="flex flex-col gap-[75px] mb-20 xs:items-center xs:justify-center md:justify-center">
-        <div className="flex xs:flex-col  md:flex-row">
-          <div className="flex flex-col gap-6 px-[75px] mt-[179px] text-start xs:px-40">
+      <div className="flex flex-col gap-[75px] mb-20 xs2:items-center xs2:justify-center md:justify-center">
+        <div className="flex xs2:flex-col md:flex-row">
+          <div className="flex flex-col gap-6 px-[75px] mt-[179px] text-start xs2:px-44">
             <h1 className="text-[54px] font-semibold">Our Story</h1>
             <p>
               Launced in 2015, Exclusive is South Asia’s premier online shopping
@@ -36,12 +36,12 @@ function About() {
             </p>
           </div>
           <img
-            className="mt-11 max-w-[709px] h-auto self-center md:w-full"
+            className="mt-11 max-w-[709px] h-auto self-center xs2:px-44 md:w-full"
             src={pink}
             alt="pink image"
           />
         </div>
-        <div className="flex mx-[135px] my-[140px] gap-[30px] items-center xs:flex-col md:flex-row">
+        <div className="flex mx-[135px] my-[140px] gap-[30px] items-center xs2:flex-col md:flex-row">
           <div className="flex flex-col gap-4 items-center w-[270px] h-[230px] border py-[30px] rounded-md">
             <img className="w-20" src={market} alt="market icon" />
             <p className="text-[32px] font-bold">10.5K</p>
@@ -65,7 +65,7 @@ function About() {
         </div>
       </div>
 
-      <div className="flex mb-36 justify-center min-h-[564px] overflow-y-auto gap-[30px] xs:flex-col xs:gap-32 xs:mx-5 md:flex-row">
+      <div className="flex mb-36 justify-center min-h-[564px] overflow-y-auto gap-[30px] xs2:flex-col xs2:gap-32 xs2:mx-5 md:flex-row">
         <div className="bg-secondary h-[430px] text-start">
           <img
             className="min-w-[326px] h-[392px] mx-auto mt-[39px]"
@@ -135,7 +135,7 @@ function About() {
       </div>
       <div className="flex justify-center mt-10"></div>
 
-      <div className="flex justify-around my-[140px] xs:flex-col xs:gap-8 md:flex-row">
+      <div className="flex justify-around my-[140px] xs2:flex-col xs2:gap-8 md:flex-row">
         <div className="flex flex-col items-center">
           <div className="bg-customblack rounded-full p-2">
             <div className="bg-black p-2 rounded-full">

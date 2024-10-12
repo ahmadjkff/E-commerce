@@ -70,9 +70,9 @@ function ProductView() {
   if (loading) return <CircularSize />;
 
   return (
-    <div className="flex flex-col mx-[135px] my-[140px]">
-      <div className="flex gap-[30px] mb-[140px] xs:flex-col md:flex-col lg:flex-row xs:items-center">
-        <div className="grid gap-4 gap-x-52 xs:grid-cols-2 lg:grid-cols-1 xs:mr-40">
+    <div className="flex flex-col xs2:px-[72px] mx-[135px] my-[140px]">
+      <div className="flex gap-[30px] mb-[140px] xs2:flex-col md:flex-col lg:flex-row xs2:items-center">
+        <div className="grid gap-4 gap-x-52 xs2:grid-cols-2 lg:grid-cols-1 xs2:mr-40">
           {[...Array(4)].map((_, index) => (
             <img
               key={index}
@@ -225,7 +225,7 @@ function ProductView() {
       </div>
 
       {/* Related Items */}
-      <div className="flex flex-col gap-10 text-start xs:items-center md:items-start">
+      <div className="flex flex-col gap-10 text-start xs2:items-center md:items-start">
         <div className="flex gap-4 items-center">
           <div className="bg-button2 w-5 h-10 rounded-md" />
           <h1 className="text-xl text-button2">Related Item</h1>

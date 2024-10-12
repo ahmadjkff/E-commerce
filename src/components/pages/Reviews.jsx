@@ -7,9 +7,8 @@ function Reviews() {
   const { wishList } = useContext(WishlistContext);
   const { ratingProducts } = useContext(ProductContext);
 
-
   return (
-    <div className="flex flex-col gap-8 mx-[135px] my-32 items-start">
+    <div className="flex flex-col gap-8 mx-[135px] my-32 xs2:items-center md:items-start">
       <p className=" mb-20 ">
         <span className="text-gray-400">Home /</span> My reviews
       </p>
