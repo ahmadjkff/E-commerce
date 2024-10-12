@@ -24,7 +24,7 @@ function BrowseByCategory() {
         <h1 className="text-xl text-button2">Categories</h1>
       </div>
       <h1 className="text-4xl font-semibold text-center">Browse By Category</h1>
-      <div className="category flex justify-between flex-wrap xs:flex-col xs:items-center xs:gap-8 md:flex-row">
+      <div className="category flex justify-between flex-wrap xs2:flex-col xs2:items-center xs2:gap-8 md:flex-row">
         {images.map((image, index) => (
           <Link
             key={index} // Add a key prop to uniquely identify each Link

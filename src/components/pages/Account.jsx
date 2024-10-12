@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 function Account() {
   return (
-    <div className="mx-[135px]">
-      <div className="flex justify-between mb-20">
+    <div className="xs2:mx-20 md:mx-[135px]">
+      <div className="flex justify-between mb-20 gap-10 xs2:flex-col md:flex-row">
         <h1>
           <span className="text-gray-400">Home /</span> My Account
         </h1>
@@ -12,7 +12,7 @@ function Account() {
         </p>
       </div>
 
-      <div className="flex justify-between">
+      <div className="flex justify-between xs2:flex-col md:flex-row">
         <div className="flex flex-col gap-4 text-start">
           <h4 className="text-base font-medium">Manage My Account</h4>
           <ul className="ml-10 text-gray-400">
@@ -40,16 +40,16 @@ function Account() {
           </Link>
         </div>
 
-        <div className="flex flex-col gap-4 shadow-md text-start py-10 px-20 mb-[140px] w-[870px]">
+        <div className="flex flex-col gap-4 shadow-md text-start py-10 xs2:pr-16 md:px-20 mb-[140px] xs2:w-[300px] md:w-[870px]">
           <h3 className="text-button2 text-xl">Edit Your Profile</h3>
           <form className="flex flex-col gap-6">
-            <div className="flex flex-wrap gap-6 justify-between">
+            <div className="flex flex-wrap gap-6 justify-between xs2:flex-col md:flex-row">
               <div className="flex flex-col">
                 <label htmlFor="Fname">First Name</label>
                 <input
                   placeholder="First Name"
                   type="text"
-                  className="w-[330px] py-[13px] px-4 bg-secondary rounded-md"
+                  className="w-full py-[13px] xs2:px-2 md:px-4 bg-secondary rounded-md"
                   id="Fname"
                 />
               </div>
@@ -58,7 +58,7 @@ function Account() {
                 <input
                   placeholder="Last Name"
                   type="text"
-                  className="w-[330px] py-[13px] px-4 bg-secondary rounded-md"
+                  className="w-full py-[13px] xs2:px-2 md:px-4 bg-secondary rounded-md"
                   id="Lname"
                 />
               </div>
@@ -67,7 +67,7 @@ function Account() {
                 <input
                   placeholder="Email"
                   type="email"
-                  className="w-[330px] py-[13px] px-4 bg-secondary rounded-md"
+                  className="w-full py-[13px] xs2:px-2 md:px-4 bg-secondary rounded-md"
                   id="email"
                 />
               </div>
@@ -76,7 +76,7 @@ function Account() {
                 <input
                   placeholder="Address"
                   type="text"
-                  className="w-[330px] py-[13px] px-4 bg-secondary rounded-md"
+                  className="w-full py-[13px] xs2:px-2 md:px-4 bg-secondary rounded-md"
                   id="address"
                 />
               </div>
@@ -99,7 +99,7 @@ function Account() {
                 />
               </div>
             </div>
-            <div className="flex justify-end gap-8">
+            <div className="flex justify-end gap-8 xs2:flex-col md:flex-row">
               <button className="border border-black py-4 px-12 rounded-md hover:bg-button2 hover:border-none hover:text-white">
                 Cancel
               </button>
