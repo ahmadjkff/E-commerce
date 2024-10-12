@@ -86,7 +86,7 @@ function Product({ rating, ratingReadonly, isWishList, product }) {
           rating={rating ? rating : product.rating}
           isreadonly={ratingReadonly}
         />
-        <p>({product?.reviews?.length})</p>
+        <p>{ratingReadonly ? "" : `(${product?.reviews?.length})`}</p>
       </div>
     </div>
   );

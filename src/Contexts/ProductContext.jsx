@@ -33,8 +33,17 @@ export const ProductProvider = ({ children }) => {
   }, [id]);
 
   const setRatingProductsItems = (product, newValue) => {
+    const isProductInReview = ratingProducts.some(
+      (item) => item.product.id === product.id
+    );
     setRatingProducts((prevRatingProducts) => {
-      return [...prevRatingProducts, { product, userRating: newValue }];
+      return isProductInReview
+        ? window.confirm(`Do you want to rereview ${product?.title}`)
+          ? (prevRatingProducts.filter((item) => item?.id !== product?.id),
+            [...prevRatingProducts, { product, userRating: newValue }])
+          : [...prevRatingProducts]
+        : (window.alert("Thank you for your review"),
+          [...prevRatingProducts, { product, userRating: newValue }]);
     });
   };
 

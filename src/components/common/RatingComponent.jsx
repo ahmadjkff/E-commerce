@@ -7,8 +7,6 @@ export default function RatingComponent({ product, rating, isreadonly }) {
   const [value, setValue] = React.useState(rating);
   const { setRatingProductsItems } = React.useContext(ProductContext);
 
-  console.log(isreadonly);
-
   return (
     <Box sx={{ "& > legend": { mt: 2 } }}>
       <Rating
