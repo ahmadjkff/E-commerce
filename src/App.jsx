@@ -21,6 +21,7 @@ import Search from "./components/pages/Search";
 import Account from "./components/pages/Account";
 import Reviews from "./components/pages/Reviews";
 import { AuthContextProvider } from "./Contexts/auth";
+import Top from "./components/Top";
 
 function App() {
   useEffect(() => {
@@ -34,6 +35,7 @@ function App() {
           <CartProvider>
             <AuthContextProvider>
               <Router>
+                <Top />
                 <Header />
                 <Routes>
                   <Route exact path="/" element={<Home />} />
