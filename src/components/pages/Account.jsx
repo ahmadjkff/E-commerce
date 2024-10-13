@@ -12,7 +12,10 @@ function Account() {
         </h1>
         <p>
           Welcome
-          <span className="text-button2">{user ? user.displayName : name}</span>
+          <span className="text-button2">
+            {" "}
+            {user ? user.displayName : name}
+          </span>
         </p>
       </div>
 
@@ -110,7 +113,10 @@ function Account() {
               <button className="border border-black py-4 px-12 rounded-md hover:bg-button2 hover:border-none hover:text-white">
                 Cancel
               </button>
-              <button className="bg-button2 rounded-md text-white py-4 px-12 hover:bg-white hover:border hover:border-black hover:text-black">
+              <button
+                className="bg-button2 rounded-md text-white py-4 px-12 hover:bg-white hover:border hover:border-black hover:text-black"
+                type="button"
+              >
                 Save Changes
               </button>
             </div>

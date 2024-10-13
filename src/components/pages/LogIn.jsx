@@ -38,6 +38,7 @@ function SignUp() {
             noValidate
             autoComplete="off"
             className="flex flex-col"
+            onSubmit={handleLogIn}
           >
             <TextField
               id="standard-basic1"
@@ -59,6 +60,7 @@ function SignUp() {
               required
               error={error && error.includes("password")}
             />
+            <button type="submit" style={{ display: "none" }}></button>
           </Box>
         </div>
         <div className="flex justify-between items-center gap-2 xs2:flex-col md:flex-row">
