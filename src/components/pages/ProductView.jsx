@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import CircularSize from "../common/Loading";
-import favorait from "../../assets/fav.png";
 import truck2 from "../../assets/truck2.png";
 import returnIcon from "../../assets/return.png";
 import Product from "../Product";

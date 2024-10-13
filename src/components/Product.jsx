@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import fav from "../assets/Product/favoraite.png";
-import view from "../assets/view.png";
 import { useContext, useMemo, useState } from "react";
 import RatingComponent from "./common/RatingComponent";
 import { WishlistContext } from "../Contexts/WishlistContext";
