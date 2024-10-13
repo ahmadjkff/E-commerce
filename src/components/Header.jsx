@@ -92,11 +92,11 @@ function Header() {
             <Link to="/wishlist">
               <img src={favorait} alt="" width={32} />
               <div
-                className={`absolute bg-button2 rounded-full w-4 h-4 top-0 right-0 ${
+                className={`absolute bg-button2 rounded-full xs2:w-3 md:w-4 xs2:h-3 md:h-4 top-0 right-0 ${
                   wishListLength ? "absolute" : "hidden"
                 }`}
               >
-                <p className="text-xs text-white text-center">
+                <p className="xs2:text-[8px] md:text-xs text-white text-center">
                   {wishListLength}
                 </p>
               </div>
@@ -106,11 +106,13 @@ function Header() {
             <Link to="/cart">
               <img src={cart} alt="" width={32} />
               <div
-                className={`bg-button2 rounded-full w-4 h-4 top-0 right-0 ${
+                className={`bg-button2 rounded-full xs2:w-3 md:w-4  xs2:h-3 md:h-4 top-0 right-0 ${
                   cartLength ? "absolute" : "hidden"
                 }`}
               >
-                <p className="text-xs text-white text-center">{cartLength}</p>
+                <p className="xs2:text-[8px] md:text-xs text-white text-center">
+                  {cartLength}
+                </p>
               </div>
             </Link>
           </div>
