@@ -8,7 +8,6 @@ import emma from "../../assets/emma.png";
 import twitterblack from "../../assets/twitterblack.png";
 import linkedinblack from "../../assets/linkedinblack.png";
 import instagramblack from "../../assets/instagramblack.png";
-import dots from "../../assets/dots.png";
 import truck from "../../assets/Home/truck.png";
 import headphone from "../../assets/Home/headphone.png";
 import guarantee from "../../assets/Home/guarantee.png";
