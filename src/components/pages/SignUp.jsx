@@ -4,17 +4,34 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
 import { auth } from "../../config/firebase";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { useContext } from "react";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Contexts/auth";
 
 function SignUp() {
-  const { user } = useContext(AuthContext);
+  const { user, name, setName, email, setEmail, password, setPassword } =
+    useContext(AuthContext);
 
-  const handleSignIn = () => {
+  const [error, setError] = useState("");
+
+  const handleSignInWithGoogle = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider);
     console.log(user);
+  };
+  const handleSignUpWithEmail = async (e) => {
+    e.preventDefault();
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      signInWithEmailAndPassword(auth, email, password);
+    } catch (err) {
+      setError(err.message);
+    }
   };
   return (
     <div className="flex pr-10 mb-36 xs2:flex-col xs2:gap-4 xs2:justify-center xs2:items-center xs2:mx-10 md:justify-center md:flex-row md:gap-32">
@@ -35,26 +52,39 @@ function SignUp() {
             autoComplete="off"
             className="flex flex-col"
           >
-            <TextField id="standard-basic" label="Name" variant="standard" />
+            <TextField
+              id="standard-basic"
+              label="Name"
+              variant="standard"
+              required
+              onChange={(e) => setName(e.target.value)}
+            />
             <TextField
               id="standard-basic"
               label="Email/phone"
               variant="standard"
+              required
+              onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
               id="standard-basic"
               label="Password"
               variant="standard"
+              required
+              onChange={(e) => setPassword(e.target.value)}
             />
           </Box>
         </div>
-        <button className="bg-button2 text-white p-4 rounded-md border border-black w-full hover:bg-white hover:text-button2">
+        <button
+          className="bg-button2 text-white p-4 rounded-md border border-black w-full hover:bg-white hover:text-button2"
+          onClick={(e) => handleSignUpWithEmail(e)}
+        >
           Create Account
         </button>
         <div className="relative w-full">
           <button
             className="border w-full p-4 rounded-md border-black hover:bg-button2 hover:text-white"
-            onClick={handleSignIn}
+            onClick={handleSignInWithGoogle}
           >
             <img
               className="absolute w-4 h-4 xs2:left-5 md:left-20 top-1/2 transform -translate-y-1/2"

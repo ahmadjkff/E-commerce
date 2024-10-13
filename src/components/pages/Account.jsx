@@ -3,7 +3,7 @@ import { AuthContext } from "../../Contexts/auth";
 import { useContext } from "react";
 
 function Account() {
-  const { user } = useContext(AuthContext);
+  const { user, name, password } = useContext(AuthContext);
   return (
     <div className="xs2:mx-20 md:mx-[135px]">
       <div className="flex justify-between mb-20 gap-10 xs2:flex-col md:flex-row">
@@ -11,8 +11,8 @@ function Account() {
           <span className="text-gray-400">Home /</span> My Account
         </h1>
         <p>
-          Welcome{" "}
-          <span className="text-button2">{user ? user.displayName : ""}</span>
+          Welcome
+          <span className="text-button2">{user ? user.displayName : name}</span>
         </p>
       </div>
 
@@ -55,7 +55,7 @@ function Account() {
                   type="text"
                   className="w-full py-[13px] xs2:px-2 md:px-4 bg-secondary rounded-md"
                   id="Fname"
-                  defaultValue={user ? user.displayName : ""}
+                  defaultValue={user ? user.displayName : name}
                 />
               </div>
               <div className="flex flex-col">
@@ -89,9 +89,10 @@ function Account() {
               <div className="flex flex-col gap-4 w-full">
                 <h3 className="text-base">Password Changes</h3>
                 <input
-                  type="text"
+                  type="password"
                   className="w-full py-[13px] px-4 bg-secondary rounded-md"
                   placeholder="Current Password"
+                  defaultValue={password}
                 />
                 <input
                   type="text"
