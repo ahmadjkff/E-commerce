@@ -6,7 +6,7 @@ Welcome to the E-Commerce Website project! This project is built using React and
 
 You can visit the live demo of the project at the following link:
 
-[Visit the E-Commerce Website](https://vercel.live/link/e-commerce-beryl-nu.vercel.app?via=project-dashboard-alias-list&p=1)
+[Visit the E-Commerce Website]([https://vercel.live/link/e-commerce-beryl-nu.vercel.app?via=project-dashboard-alias-list&p=1](https://e-commerce-beryl-nu.vercel.app/))
 
 ## Features
 
