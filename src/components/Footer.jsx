@@ -17,11 +17,11 @@ function Footer() {
 
         <div className="relative">
           <input
-            className="border-2 py-3 px-4 bg-black"
+            className="border-2 py-3 px-4 bg-black xs2:w-full xs2:text-[9px] md:text-base md:w-60"
             type="text"
             placeholder="Enter Your Email"
           />
-          <button className="absolute top-1/2 w-6 right-3 transform -translate-y-1/2">
+          <button className="absolute top-1/2 xs2:w-3 md:w-6 right-3 transform -translate-y-1/2">
             <img src={arrow} alt="arrow icon" />
           </button>
         </div>
