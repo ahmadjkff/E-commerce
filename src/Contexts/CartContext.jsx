@@ -13,16 +13,35 @@ export const CartProvider = ({ children }) => {
         .toFixed(2)
     )
   );
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+  const [alertSeverity, setAlertSeverity] = useState("");
 
-  const setCartItems = (product) => {
+  const setCartItems = (product, fromWishlist) => {
     setCart((prevCart) => {
       const isProductInCart = prevCart.some((item) => item.id === product.id);
 
       if (isProductInCart) {
-        window.alert(`Product "${product.title}" already in cart`);
+        setShowAlert(true);
+        setAlertMessage(
+          `${
+            fromWishlist
+              ? "Products already in cart"
+              : `"${product.title}" already in cart`
+          }`
+        );
+        setAlertSeverity("warning");
         return [...prevCart];
       }
-
+      setShowAlert(true);
+      setAlertMessage(
+        `${
+          fromWishlist
+            ? "Products moved to cart"
+            : `"${product.title}" added to cart`
+        }`
+      );
+      setAlertSeverity("success");
       return [...prevCart, { ...product, quantity: 1 }];
     });
   };
@@ -36,9 +55,32 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
+  useEffect(() => {
+    setTotal(
+      parseFloat(
+        cart
+          .reduce((acc, product) => acc + product.price * product.quantity, 0)
+          .toFixed(2)
+      )
+    );
+  }, [cart]);
+
   return (
     <CartContext.Provider
-      value={{ cart, setCart, setCartItems, removeCartItem, total, setTotal }}
+      value={{
+        cart,
+        setCart,
+        setCartItems,
+        removeCartItem,
+        total,
+        setTotal,
+        showAlert,
+        setShowAlert,
+        alertMessage,
+        alertSeverity,
+        setAlertMessage,
+        setAlertSeverity,
+      }}
     >
       {children}
     </CartContext.Provider>

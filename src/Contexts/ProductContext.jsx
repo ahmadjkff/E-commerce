@@ -42,8 +42,7 @@ export const ProductProvider = ({ children }) => {
           ? (prevRatingProducts.filter((item) => item?.id !== product?.id),
             [...prevRatingProducts, { product, userRating: newValue }])
           : [...prevRatingProducts]
-        : (window.alert("Thank you for your review"),
-          [...prevRatingProducts, { product, userRating: newValue }]);
+        : [...prevRatingProducts, { product, userRating: newValue }];
     });
   };
 

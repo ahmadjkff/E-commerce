@@ -16,7 +16,7 @@ function WishList() {
         <button
           className="border mt-4 xs:px-4 sm:px-6 sm:py-2 md:px-12 md:py-4 rounded-md hover:border-black hover:bg-button2 hover:text-white"
           onClick={() => {
-            wishList.forEach((item) => setCartItems(item));
+            wishList.forEach((item) => setCartItems(item, true));
             setWishList([]);
           }}
         >

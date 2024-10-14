@@ -22,6 +22,7 @@ import Account from "./components/pages/Account";
 import Reviews from "./components/pages/Reviews";
 import { AuthContextProvider } from "./Contexts/auth";
 import Top from "./components/Top";
+import FilledAlerts from "./components/common/Alert";
 
 function App() {
   useEffect(() => {
@@ -29,7 +30,7 @@ function App() {
   }, []);
 
   return (
-    <div className="font-poppins">
+    <div className="relative font-poppins">
       <ProductProvider>
         <WishlistProvider>
           <CartProvider>
@@ -37,6 +38,7 @@ function App() {
               <Router>
                 <Top />
                 <Header />
+                <FilledAlerts />
                 <Routes>
                   <Route exact path="/" element={<Home />} />
                   <Route path="/about" element={<About />} />

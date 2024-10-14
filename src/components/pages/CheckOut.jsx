@@ -18,7 +18,20 @@ const DETAILS = [
 ];
 
 function Checkout() {
-  const { cart, total } = useContext(CartContext);
+  const {
+    cart,
+    total,
+    setShowAlert,
+    setAlertMessage,
+    setAlertSeverity,
+    setCart,
+  } = useContext(CartContext);
+  const handlePlaceOrder = () => {
+    setShowAlert(true);
+    setAlertSeverity("success");
+    setAlertMessage("Order Placed Successfully");
+    setCart([]);
+  };
 
   return (
     <div className="xs2:mx-20 md:mx-[135px] text-start mb-36">
@@ -109,7 +122,10 @@ function Checkout() {
               Apply Coupon
             </button>
           </div>
-          <button className="bg-button2 py-4 px-12 rounded-md text-white">
+          <button
+            className="bg-button2 py-4 px-12 rounded-md text-white"
+            onClick={handlePlaceOrder}
+          >
             Place Order
           </button>
         </div>

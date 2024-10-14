@@ -5,16 +5,21 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../config/firebase";
 import { AuthContext } from "../../Contexts/auth";
 import { useContext, useState } from "react";
+import { CartContext } from "../../Contexts/CartContext";
 
 function SignUp() {
   const { email, password, setEmail, setPassword } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const { setShowAlert, setAlertMessage, setAlertSeverity } =
+    useContext(CartContext);
 
   const handleLogIn = async (e) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      alert("Login successful!");
+      setShowAlert(true);
+      setAlertMessage("Login successful!");
+      setAlertSeverity("success");
     } catch (err) {
       setError(err.message);
     }
