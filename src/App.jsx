@@ -25,6 +25,7 @@ import Top from "./components/Top";
 import FilledAlerts from "./components/common/Alert";
 import Orders from "./components/pages/Orders";
 import { OrdersProvider } from "./Contexts/OrdersContext";
+import Cancellations from "./components/pages/Cancellations";
 
 function App() {
   useEffect(() => {
@@ -52,6 +53,7 @@ function App() {
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/checkout" element={<Checkout />} />
                     <Route path="/orders" element={<Orders />} />
+                    <Route path="/Cancellations" element={<Cancellations />} />
                     <Route path="/account" element={<Account />} />
                     <Route path="/products" element={<Products />} />
                     <Route path="/products/:id" element={<ProductView />} />

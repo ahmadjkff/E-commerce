@@ -196,7 +196,7 @@ export default function Menu() {
                               </defs>
                             </svg>
 
-                            <Link to="/reviews">My Cancellations</Link>
+                            <Link to="/Cancellations">My Cancellations</Link>
                           </MenuItem>,
                           <MenuItem
                             key="reviews"

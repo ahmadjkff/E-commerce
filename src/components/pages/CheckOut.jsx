@@ -27,9 +27,15 @@ function Checkout() {
     setAlertSeverity,
     setCart,
   } = useContext(CartContext);
-  const { orders, setOrdersItems } = useContext(OrdersContext);
+  const { setOrdersItems } = useContext(OrdersContext);
 
   const handlePlaceOrder = () => {
+    if (cart.length === 0) {
+      setShowAlert(true);
+      setAlertMessage("Cart is empty");
+      setAlertSeverity("error");
+      return;
+    }
     const newOrder = {
       items: cart,
       total,
@@ -41,6 +47,8 @@ function Checkout() {
     setAlertMessage("Order Placed Successfully");
     setAlertSeverity("success");
     setCart([]);
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
