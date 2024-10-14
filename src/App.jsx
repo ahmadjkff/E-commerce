@@ -23,6 +23,8 @@ import Reviews from "./components/pages/Reviews";
 import { AuthContextProvider } from "./Contexts/auth";
 import Top from "./components/Top";
 import FilledAlerts from "./components/common/Alert";
+import Orders from "./components/pages/Orders";
+import { OrdersProvider } from "./Contexts/OrdersContext";
 
 function App() {
   useEffect(() => {
@@ -35,28 +37,31 @@ function App() {
         <WishlistProvider>
           <CartProvider>
             <AuthContextProvider>
-              <Router>
-                <Top />
-                <Header />
-                <FilledAlerts />
-                <Routes>
-                  <Route exact path="/" element={<Home />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/signup" element={<SignUp />} />
-                  <Route path="/login" element={<LogIn />} />
-                  <Route path="/wishlist" element={<WishList />} />
-                  <Route path="/cart" element={<Cart />} />
-                  <Route path="/checkout" element={<Checkout />} />
-                  <Route path="/account" element={<Account />} />
-                  <Route path="/products" element={<Products />} />
-                  <Route path="/products/:id" element={<ProductView />} />
-                  <Route path="/reviews" element={<Reviews />} />
-                  <Route path="/search" element={<Search />} />
-                  <Route path="*" element={<Error />} />
-                </Routes>
-                <Footer />
-              </Router>
+              <OrdersProvider>
+                <Router>
+                  <Top />
+                  <Header />
+                  <FilledAlerts />
+                  <Routes>
+                    <Route exact path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/signup" element={<SignUp />} />
+                    <Route path="/login" element={<LogIn />} />
+                    <Route path="/wishlist" element={<WishList />} />
+                    <Route path="/cart" element={<Cart />} />
+                    <Route path="/checkout" element={<Checkout />} />
+                    <Route path="/orders" element={<Orders />} />
+                    <Route path="/account" element={<Account />} />
+                    <Route path="/products" element={<Products />} />
+                    <Route path="/products/:id" element={<ProductView />} />
+                    <Route path="/reviews" element={<Reviews />} />
+                    <Route path="/search" element={<Search />} />
+                    <Route path="*" element={<Error />} />
+                  </Routes>
+                  <Footer />
+                </Router>
+              </OrdersProvider>
             </AuthContextProvider>
           </CartProvider>
         </WishlistProvider>

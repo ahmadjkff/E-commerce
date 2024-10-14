@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import payment from "../../assets/payment.png";
 import { CartContext } from "../../Contexts/CartContext";
+import { OrdersContext } from "../../Contexts/OrdersContext";
 
 const DETAILS = [
   { name: "First Name", label: "name", required: true, type: "text" },
@@ -26,10 +27,19 @@ function Checkout() {
     setAlertSeverity,
     setCart,
   } = useContext(CartContext);
+  const { orders, setOrdersItems } = useContext(OrdersContext);
+
   const handlePlaceOrder = () => {
+    const newOrder = {
+      items: cart,
+      total,
+      date: new Date().toISOString(),
+    };
+
+    setOrdersItems(newOrder);
     setShowAlert(true);
-    setAlertSeverity("success");
     setAlertMessage("Order Placed Successfully");
+    setAlertSeverity("success");
     setCart([]);
   };
 
