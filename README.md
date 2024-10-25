@@ -26,5 +26,3 @@ You can visit the live demo of the project at the following link:
 
 ## Will Be Added
 - Improve responsive design
-- My Order Page
-- My Cancilation Page
